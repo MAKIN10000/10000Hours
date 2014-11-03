@@ -7,9 +7,16 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'activeresource'
 gem 'protected_attributes'
+gem 'rails_12factor'
+gem 'sass-rails',   '>= 3.2.3'
+gem 'coffee-rails'
+gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
+gem 'uglifier', '>= 1.0.3'
 # use Haml for templates
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.0'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
@@ -17,15 +24,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
-end
-group :assets do
-  gem 'sass-rails',   '>= 3.2.3'
-  gem 'coffee-rails'
-  gem 'execjs'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier', '>= 1.0.3'
 end
 
 # To use ActiveModel has_secure_password
