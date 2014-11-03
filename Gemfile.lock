@@ -134,6 +134,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.0)
   coffee-rails
   debugger
+  execjs
   haml
   jquery-rails
   pg
