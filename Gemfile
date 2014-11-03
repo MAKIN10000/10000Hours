@@ -10,9 +10,6 @@ gem 'protected_attributes'
 gem 'rails_12factor'
 gem 'sass-rails',   '>= 3.2.3'
 gem 'coffee-rails'
-gem 'execjs'
-gem 'therubyracer', :platforms => :ruby
-gem 'uglifier', '>= 1.0.3'
 # use Haml for templates
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.0'
@@ -21,7 +18,11 @@ group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
 end
-
+group :assets do
+  gem 'execjs'
+  gem 'therubyracer', :platforms => :ruby
+  gem 'uglifier', '>= 1.0.3'
+end
 group :production do
   gem 'pg'
 end
