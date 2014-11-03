@@ -1,0 +1,12 @@
+-# in app/views/users/new.html.haml
+%h1 Sign Up 
+
+= form_tag users_path, :method => :post do
+
+  = label :user, :user_id, 'User-ID'
+  = text_field :user, :user_id, :id => "signup_userid"
+
+  = label :user, :email, 'E-Mail'
+  = text_field :user, :email, :id => "signup_email"
+
+  = submit_tag 'Create my account', :id => "signup_submit"

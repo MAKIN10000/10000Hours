@@ -1,0 +1,58 @@
+%div.tab-content
+  %div.carousel.slide{:id => 'front', :data=>{:ride=>"carousel"}}
+    %ol.carousel-indicators
+      %li.active{:data=>{:target=>"#front", :slide=>{:to=>"0"}}} 
+      %li{:data=>{:target=>"#front", :slide=>{:to=>"1"}}}
+      %li{:data=>{:target=>"#front", :slide=>{:to=>"2"}}}
+      %li{:data=>{:target=>"#front", :slide=>{:to=>"3"}}}
+      %li{:data=>{:target=>"#front", :slide=>{:to=>"4"}}}
+    %div.carousel-inner
+      %div.item.active
+        %img{ :data=>{:src=>"holder.js/900x500/auto/#555:#5a5a5a/text:Subscribe"}, :alt=>"first slide"}
+        %div.container
+          %div.carousel-caption
+            %h1 Test Headline
+            %p Some stuff about a friend's goal
+            =button_to 'View', '#', class: "btn btn-lg btn-primary"
+      %div.item
+        %img{ :data=>{:src=>"holder.js/900x500/auto/#555:#5a5a5a/text:Subscribe"}, :alt=>"second slide"}
+        %div.container
+          %div.carousel-caption
+            %h1 More stuff about Charity
+            %p blah blah blah
+            =button_to 'View', '#', class: "btn btn-lg btn-primary"
+      %div.item
+        %img{ :data=>{:src=>"holder.js/900x500/auto/#555:#5a5a5a/text:Subscribe"}, :alt=>"third slide"}
+        %div.container
+          %div.carousel-caption
+            %h1 Other stuff
+            %p Blah bla blaahaha
+            =button_to 'View', '#', class: "btn btn-lg btn-primary"
+      %div.item
+        %img{ :data=>{:src=>"holder.js/900x500/auto/#555:#5a5a5a/text:Subscribe"}, :alt=>"fourth slide"}
+        %div.container
+          %div.carousel-caption
+            %h1 Maybe an Ad?
+            %p sell sell sell
+            =button_to 'Click Here', '#', class: "btn btn-lg btn-primary"
+      %div.item
+        %img{ :data=>{:src=>"holder.js/900x500/auto/#555:#5a5a5a/text:Subscribe"}, :alt=>"fifth slide"}
+        %div.container
+          %div.carousel-caption
+            %h1 Subscribe for more content
+            %p just $19.99/month
+            =button_to 'Sign Up', '#registerModal', class: "btn btn-lg btn-primary"
+    %a.left.carousel-control{:href=>'#front',:role=> "button",:data=>{:slide=>"prev"}}
+      %span.glyphicon.glyphicon-chevron-left
+      %span.sr-only Previous
+    %a.right.carousel-control{:href=>'#front',:role=> "button",:data=>{:slide=>"next"}}
+      %span.glyphicon.glyphicon-chevron-right
+      %span.sr-only Next
+  %div.container.marketing
+    %div.row.featurette
+      %div.col-md-7
+        %h2.featurette-heading Friend story/goal. 
+        %p.lead Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+      %div.col-md-5
+        %img.featurette-image.img-responsive{:src=>"/index.svg"}
+    %hr.featurette-divider
