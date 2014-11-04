@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-user = User.create! {:session_token => SecureRandom.base64, :user_id => 'nick', :password => 'filmcrew', :password_confirmation => 'filmcrew', :email => 'nick@gmail.com'}
+#user = User.create! {:session_token => SecureRandom.base64, :user_id => 'nick', :password => 'filmcrew', :password_confirmation => 'filmcrew', :email => 'nick@gmail.com'}

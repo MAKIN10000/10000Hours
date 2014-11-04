@@ -15,6 +15,7 @@ gem 'bcrypt-ruby', '~>3.0.0'
 # use Haml for templates
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.0'
+gem 'omniauth-facebook'
 #gem 'strong_parameter'
 
 group :development, :test do
