@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   def User::create_user! (hash)
     session = SecureRandom.base64
     hash[:session_token]= session
-  #  puts "PASSSWoRD #{hash}"
+
     User.create!(hash)
   end
 

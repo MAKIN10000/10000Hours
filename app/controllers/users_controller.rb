@@ -21,10 +21,15 @@ class UsersController < ApplicationController
         flash[:notice] = "User ID exists, please choose another"
         redirect_to new_user_path
     else
-      @user = User.create_user! params[:user]
-      flash[:notice] = "Welcome #{@user.user_id}. Your account has been  created."
-      redirect_to login_path
-
+      user = User.new(params[:user])
+      if user.valid?
+        @user = User.create_user! params[:user]
+        flash[:notice] = "Welcome #{@user.user_id}. Your account has been  created."
+        redirect_to login_path
+      else
+        flash[:warning] = "#{user.errors.full_messages}"
+        redirect_to home_index_path
+      end
     end
   end
 
