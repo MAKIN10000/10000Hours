@@ -29,6 +29,7 @@
               =text_field :user, :password, :class =>"form-control", :type=>"password",:placeholder=>"Password", :required=>"true"
               %br
               =submit_tag 'Login', :class=> "btn btn-info"
+<<<<<<< HEAD
 
     %div.modal.fade{:id=>"createUserModal", :tabindex=>"-1", :role=>"dialog", :aria=>{:labelledby=>"myModalLabel"}, :aria=>{:hidden=>"true"}}
       %div.modal-dialog
@@ -49,6 +50,9 @@
               =submit_tag 'Create Account', :class=> "btn btn-info"
 
     %nav.navbar-default.navbar-fixed-top{:role=>"navigation", :style => "height: 50px;"}
+=======
+    %nav.navbar-default.navbar-fixed-top{:role=>"navigation"}
+>>>>>>> 5444c37746f331705c0d3a05ff88637ab8e58f9f
       %div.container
         %div.navbar-header
           %button.navbar-toggle.collapsed{ :type=>"button", :data=>{:toggle=>"collapse",:target=>"#navbar"}, :aria=>{:expanded=>"false",:controls=>"navbar"}}
@@ -56,7 +60,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          =link_to '10000 Hours', home_index_path, class: 'navbar-brand'
+          =link_to '10000 Hours', home_index_path, class: 'navbar-brand', style: "height: auto"
         %div.navbar-collapse.collapse{:id=>'navbar'}
           %ul.nav.navbar-nav
             %li.active=link_to 'Home', home_index_path
