@@ -7,8 +7,8 @@
   = text_field :user, :user_id, :id => "login_userid"
   
 
-  = label :user, :email, 'E-Mail'
-  = text_field :user, :email, :id=>"login_email"
+  = label :user, :password, 'Password'
+  = text_field :user, :password, :id=>"login_password", :type => "password"
 
   = submit_tag 'login', :id =>"login_submit"
 = link_to "Sign up", new_user_path, :id => "login_signup"
