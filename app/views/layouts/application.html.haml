@@ -21,7 +21,7 @@
               =text_field :user, :email, :class =>"form-control", :name=>"password", :type=>"email",:placeholder=>"Password", :required=>true
               %br
               =submit_tag 'Login', :class=> "btn btn-info"
-    %nav.navbar-default.navbar-fixed-top{:role=>"navigation", :style => "height: 50px;"}
+    %nav.navbar-default.navbar-fixed-top{:role=>"navigation"}
       %div.container
         %div.navbar-header
           %button.navbar-toggle.collapsed{ :type=>"button", :data=>{:toggle=>"collapse",:target=>"#navbar"}, :aria=>{:expanded=>"false",:controls=>"navbar"}}
@@ -29,7 +29,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          =link_to '10000 Hours', home_index_path, class: 'navbar-brand'
+          =link_to '10000 Hours', home_index_path, class: 'navbar-brand', style: "height: auto"
         %div.navbar-collapse.collapse{:id=>'navbar'}
           %ul.nav.navbar-nav
             %li.active=link_to 'Home', home_index_path
