@@ -1,3 +1,4 @@
+
 %html
   %head
     %title 10000 Hours
@@ -5,9 +6,16 @@
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'carousel'
     = javascript_include_tag 'application'
+    = javascript_include_tag "jquery_ujs"
     = csrf_meta_tags
 
+
   %body{:style => "padding-top: 50px;"}
+    - if flash[:notice]
+      #notice.message= flash[:notice]
+    - elsif flash[:warning]
+      #warning.message= flash[:warning]
+
     %div.modal.fade{:id=>"loginModal", :tabindex=>"-1", :role=>"dialog", :aria=>{:labelledby=>"myModalLabel"}, :aria=>{:hidden=>"true"}}
       %div.modal-dialog
         %div.modal-content
@@ -18,9 +26,28 @@
             =form_tag login_create_path, :method => :post do 
               =text_field :user, :user_id, :class => "form-control", :autocomplete=>"on",:type=>"text", :placeholder=>"User ID", :autofocus=>"true", :required=>"true"
               %br
-              =text_field :user, :email, :class =>"form-control", :name=>"password", :type=>"email",:placeholder=>"Password", :required=>true
+              =text_field :user, :password, :class =>"form-control", :type=>"text",:placeholder=>"Password", :required=>"true"
               %br
               =submit_tag 'Login', :class=> "btn btn-info"
+
+    %div.modal.fade{:id=>"createUserModal", :tabindex=>"-1", :role=>"dialog", :aria=>{:labelledby=>"myModalLabel"}, :aria=>{:hidden=>"true"}}
+      %div.modal-dialog
+        %div.modal-content
+          %div.modal-header
+            =link_to 'x','', class: "close", data:{dismiss:"modal"}, aria:{hidden:"true"}
+            %h3{:id=>"myModalCreate"} Create Account
+          %div.modal-body
+            =form_tag users_path, :method => :post do 
+              =text_field :user, :user_id, :class => "form-control", :autocomplete=>"on",:type=>"text", :placeholder=>"User ID", :autofocus=>"true", :required=>"true"
+              %br
+              =text_field :user, :email, :class => "form-control", :autocomplete=>"on",:type=>"text", :placeholder=>"Email", :autofocus=>"true", :required=>"true"
+              %br
+              =text_field :user, :password, :class =>"form-control", :type=>"text",:placeholder=>"Password", :required=>"true"
+              %br
+              =text_field :user, :password_confirmation, :class =>"form-control",  :type=>"text",:placeholder=>"Confirm Password", :required=>"true"
+              %br
+              =submit_tag 'Create Account', :class=> "btn btn-info"
+
     %nav.navbar-default.navbar-fixed-top{:role=>"navigation", :style => "height: 50px;"}
       %div.container
         %div.navbar-header
@@ -46,6 +73,9 @@
                 %li=link_to 'Recommend Charity', '#'
                 %li=link_to 'Review a Charity', '#'
           %ul.nav.navbar-nav.navbar-right
-            %li=link_to 'Sign In', '#loginModal', data: {toggle: "modal"}
-            %li=link_to 'Register', '#'
+            - if !@current_user
+              %li=link_to 'Sign In', '#loginModal', data: {toggle: "modal"}
+              %li=link_to 'Register', '#createUserModal', data: {toggle: "modal"}
+            - elsif @current_user
+              %li=link_to 'Logout', logout_path, :method => :delete
     =yield

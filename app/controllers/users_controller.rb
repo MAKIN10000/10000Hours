@@ -1,6 +1,7 @@
 # This file is app/controllers/users_controller.rb
 class UsersController < ApplicationController
   before_filter :set_current_user
+
   def index
     @users = Users.all
   end
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    puts "PARAMETERS USER!!! #{params[:password]}"
     if User.exists?({:user_id => params[:user][:user_id]})
         flash[:notice] = "User ID exists, please choose another"
         redirect_to new_user_path

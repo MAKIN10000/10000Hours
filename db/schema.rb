@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103164433) do
+ActiveRecord::Schema.define(version: 20141104155636) do
 
   create_table "users", force: true do |t|
     t.string   "user_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141103164433) do
     t.string   "session_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
 end

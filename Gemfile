@@ -10,13 +10,17 @@ gem 'protected_attributes'
 gem 'rails_12factor'
 gem 'sass-rails',   '>= 3.2.3'
 gem 'coffee-rails'
+gem 'bcrypt'
+gem 'bcrypt-ruby', '~>3.0.0'
 # use Haml for templates
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.0'
+#gem 'strong_parameter'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
+  gem 'bcrypt'
 end
 group :assets do
   gem 'execjs'
