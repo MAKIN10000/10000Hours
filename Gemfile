@@ -21,7 +21,6 @@ gem 'omniauth-facebook'
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
-  gem 'bcrypt'
 end
 group :assets do
   gem 'execjs'
