@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20141104202152) do
+ActiveRecord::Schema.define(version: 20141104213611) do
 
   create_table "charities", force: true do |t|
     t.string   "name"
@@ -23,9 +22,6 @@ ActiveRecord::Schema.define(version: 20141104202152) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-=======
-ActiveRecord::Schema.define(version: 20141104213611) do
->>>>>>> 1ca8431f402e54ec1e59e5b8b766d2aecc185f48
 
   create_table "users", force: true do |t|
     t.string   "user_id"
@@ -33,7 +29,6 @@ ActiveRecord::Schema.define(version: 20141104213611) do
     t.string   "session_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
