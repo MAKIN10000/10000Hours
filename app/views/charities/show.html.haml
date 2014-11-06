@@ -1,0 +1,12 @@
+%h1 #{@charity.name} 
+
+%ul#details
+  %li
+    President: #{@charity.president_name}
+  %li
+    Email: #{@charity.contact_email}
+  %li
+    Website: #{@charity.charity_website}
+%h3 Description:
+
+%p#description= @charity.description

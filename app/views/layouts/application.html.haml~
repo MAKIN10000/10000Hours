@@ -1,37 +1,52 @@
 %html
   %head
     %title 10000 Hours
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'carousel'
     = javascript_include_tag 'application'
     = csrf_meta_tags
 
-  %body
-    %div.navbar-wrapper
+  %body{:style => "padding-top: 50px;"}
+    %div.modal.fade{:id=>"loginModal", :tabindex=>"-1", :role=>"dialog", :aria=>{:labelledby=>"myModalLabel"}, :aria=>{:hidden=>"true"}}
+      %div.modal-dialog
+        %div.modal-content
+          %div.modal-header
+            =link_to 'x','', class: "close", data:{dismiss:"modal"}, aria:{hidden:"true"}
+            %h3{:id=>"myModalLabel"} Login Form
+          %div.modal-body
+            =form_tag login_create_path, :method => :post do 
+              =text_field :user, :user_id, :class => "form-control", :autocomplete=>"on",:type=>"text", :placeholder=>"User ID", :autofocus=>"true", :required=>"true"
+              %br
+              =text_field :user, :email, :class =>"form-control", :name=>"password", :type=>"email",:placeholder=>"Password", :required=>true
+              %br
+              =submit_tag 'Login', :class=> "btn btn-info"
+    %nav.navbar-default.navbar-fixed-top{:role=>"navigation", :style => "height: 50px;"}
       %div.container
-        %div{ :class => "navbar navbar-fixed-top navbar-inverse", :role => "navigation"}
-          %div.container
-            %div.navbar-header
-              %button{:class =>"navbar-toggle", :type=>"button", :data=> {:toggle=> "collapse"}, :data =>{:target=>"navbar-collapse"}}
-                %span.sr-only Toggle navigation
-                %span.icon-bar
-                %span.icon-bar
-                %span.icon-bar
-              %h1.navbar-brand 10000 Hours 
-          %div.navbar-collapse.collapse
+        %div.navbar-header
+          %button.navbar-toggle.collapsed{ :type=>"button", :data=>{:toggle=>"collapse",:target=>"#navbar"}, :aria=>{:expanded=>"false",:controls=>"navbar"}}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          =link_to '10000 Hours', home_index_path, class: 'navbar-brand'
+        %div.navbar-collapse.collapse{:id=>'navbar'}
           %ul.nav.navbar-nav
-            %li.active 
-              =link_to 'Home', "index.php"
+            %li.active=link_to 'Home', home_index_path
+            %li=link_to 'My Goals', '#' 
+            %li=link_to 'Friends', '#'
             %li.dropdown
-              =link_to 'Links', "#", class: "dropdown-toggle", data: {toggle: "dropdown"}
-              %ul.dropdown-menu
-                %li= link_to 'Google',"http://www.google.com"
-                %li= link_to 'MSNBC', "http://www.msnbc.com"
-                %li= link_to 'Reddit',"http://www.reddit.com"
-              %ul{ :class=>"nav navbar-nav navbar-right"}
-                =form_tag "google.com", :method=>:post, :class=>"navbar-form navbar-right", :role=>"form"
-                  =text_field :search, :class=>"input-sm", :placeholder=>"Search", :required=>"true"
-                %li.dropdown
-                  =link_to '', "#", class: "dropdown-toggle" data: {toggle: "dropdown"} 
-                    %b.caret
-                    %ul.dropdown-menu
-                      %li= link_to 'Subscribe', '#subscribeModal', role: "button", data: {toggle: "modal"}
+              =link_to 'Charity <span class="caret"></span>'.html_safe, '#', class: "dropdown-toggle", data:{toggle: "dropdown"}
+              %ul.dropdown-menu{:role=>"menu"}
+                %li=link_to 'Top Charities', '#'
+                %li=link_to 'Charities in Need','#'
+                %li=link_to 'Browse Charities', charities_path
+                %li=link_to 'Add a Charity', new_charity_path
+                %li.divider
+                %li.dropdown-header More
+                %li=link_to 'Recommend Charity', '#'
+                %li=link_to 'Review a Charity', '#'
+          %ul.nav.navbar-nav.navbar-right
+            %li=link_to 'Sign In', '#loginModal', data: {toggle: "modal"}
+            %li=link_to 'Register', '#'
+    =yield

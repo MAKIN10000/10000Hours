@@ -1,0 +1,20 @@
+%h1 Add a Charity
+
+= form_tag charities_path, :method => :post do
+
+  = label :charity, :name, 'Name'
+  = text_field :charity, :name, :id => "create_charity_name"
+  %br
+  = label :charity, :description, 'Description'
+  = text_field :charity, :description, :id => "create_charity_description"
+  %br
+  = label :charity, :president_name, 'President Name'
+  = text_field :charity, :president_name, :id => "create_charity_president"
+  %br
+  = label :charity, :contact_email, 'Contact Email'
+  = text_field :charity, :contact_email, :id => "create_charity_email"
+  %br
+  = label :charity, :charity_website, 'Link to Charity'
+  = text_field :charity, :charity_website, :id => "create_charity_link"
+  %br
+  = submit_tag 'Create Charity', :id => "create_charity_submit"

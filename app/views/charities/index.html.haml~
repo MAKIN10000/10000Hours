@@ -1,0 +1,15 @@
+%h1 Charities
+%table#charities
+  %thead
+    %tr
+      %th= 'Charity Name'
+      %th= 'President'
+      %th= 'Email'
+      %th= 'More'
+  %tbody
+    - @charities.each do |charity|
+      %tr
+        %td= charity.name
+        %td= charity.president_name
+        %td= charity.contact_email
+        %td= link_to "More about #{charity.name}", charity_path(charity)

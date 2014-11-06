@@ -1,0 +1,12 @@
+%h1 #{@charity.name} 
+
+%ul#details
+  %li
+    President: #{@charity.president_name}
+  %li
+    Email: #{@charity.contact_email}
+  %li
+    %a{ :href => "#{@charity.charity_website}", :title => "Website" }
+%h3 Description:
+
+%p#description= @charity.description
