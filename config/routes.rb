@@ -4,6 +4,7 @@ Tenkhours::Application.routes.draw do
   match '/login', to: 'sessions#new', via: :get
   match '/login_create', to: 'sessions#create', via: :post
   match '/logout', to: 'sessions#destroy', via: :delete
+  get 'auth/:provider/callback', to: 'sessions#createfb'
 #  resources :users
 #  match '/login', to: 'sessions#new', via: :get
 #  match '/login_create', to: 'sessions#create', via: :post

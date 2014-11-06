@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :user_id, :email, :session_token, :password, :password_confirmation
+  attr_accessible :provider, :uid, :user_id, :email, :name, :image, :session_token, :password, :confirm_password
 
   before_save { self.email = email.downcase }
   validates :user_id, presence: true, length: { maximum: 50 }
@@ -14,10 +14,11 @@ class User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
+      user.user_id = auth.extra.username
+      user.email = auth.info.email
       user.name = auth.info.name
       user.image = auth.info.image
-      user.token = auth.credentials.token
-      user.expires_at = Time.at(auth.credentials.expires_at)
+      user.session_token = auth.credentials.token
       user.save!
     end
   end
