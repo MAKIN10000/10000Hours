@@ -25,6 +25,8 @@
                 =text_field :user, :password, :class =>"form-control", :type=>"password",:placeholder=>"Password", :required=>"true"
                 %br
                 =submit_tag 'Login', :class=> "btn btn-info"
+            %div.modal-footer
+              =button_to 'login with facebook', '/auth/facebook'
       %div.modal.fade{:id=>"createUserModal", :tabindex=>"-1", :role=>"dialog", :aria=>{:labelledby=>"myModalLabel"}, :aria=>{:hidden=>"true"}}
         %div.modal-dialog
           %div.modal-content

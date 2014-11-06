@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts "PARAMETERS USER!!! #{params[:password]}"
     if User.exists?({:user_id => params[:user][:user_id]})
         flash[:warning] = "User ID exists, please choose another"
         redirect_to new_user_path

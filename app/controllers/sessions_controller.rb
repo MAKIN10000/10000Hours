@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
   end   
 def createfb
   user = User.omniauth(env['omniauth.auth'])
-  session[:user_id] = user.id
+  session[:session_token] = user.session_token
   redirect_to home_index_path
 end
 
