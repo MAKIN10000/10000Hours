@@ -13,3 +13,6 @@
           = text_field :user, :password, :id=>"login_password", :type => "password", :class=> "form-control", :placeholder=>"password", :required=> "true"
           %br
           %button.btn.btn-primary.btnblock{:type=>"submit"} Login
+          %br
+          %p -or-
+          =button_to 'login with facebook', '/auth/facebook', class: "facebook_button"
