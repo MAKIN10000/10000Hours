@@ -1,29 +1,42 @@
 # This file is app/controllers/users_controller.rb
 class SessionsController < ApplicationController
+    before_filter :set_current_user
   def new
     #render 'new' template
   end
 
+  def login
+
+    redirect_to home_index_path
+  end
+
   def create
-   if User.exists?({:user_id => params[:user][:user_id]})
-      @user = User.find_by_user_id(params[:user][:user_id])
-      if @user.email == params[:user][:email]
-        session[:session_token] = @user.session_token
-        flash[:warning] = "Welcome #{@user.user_id}"
-        redirect_to movies_path
+    if( User.where("user_id = ?", params[:user][:user_id]).first != nil )
+      user = User.find_by_user_id(params[:user][:user_id])
+      if( user.authenticate params[:user][:password] )
+        session[:session_token] = user.session_token
+        flash[:success] = "Logged in"
+        redirect_to home_index_path
+        return
       else
-        flash[:warning] = "Incorrect email address"
+        flash[:warning] = "Login failed"
         redirect_to login_path
       end
-   else
-      flash[:notice] = "Incorrect Login"
+    else
+      flash[:warning] = "Login failed"
       redirect_to login_path
-   end
-  end
+    end
+  end   
+def createfb
+  user = User.omniauth(env['omniauth.auth'])
+  session[:session_token] = user.session_token
+  redirect_to home_index_path
+end
+
   def destroy
-    reset_session 
-    flash[:notice] = "Logout Successful"
-    redirect_to movies_path
+    session[:session_token] = nil 
+    flash[:success] = "Logout Successful"
+    redirect_to home_index_path
   end
 
 end
