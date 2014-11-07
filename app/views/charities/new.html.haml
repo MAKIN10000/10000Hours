@@ -1,17 +1,18 @@
 %section
   %div.container-fluid.login
     %div.row
-      %div.center.col-xs-6.col-md-4.well
+      %div.center.well
         %legend Create A Charity
         = form_tag charities_path, :method => :post do
-          = text_field :charity, :name, :id => "create_charity_name", :placeholder => "Charity Name", :class=>"form-control", :required=>"true"
-          %br
-          = text_area :charity, :description, :id => "create_charity_description", :placeholder=> "Description", :class=>"form-control", :required=>"true"
-          %br
-          = text_field :charity, :president_name, :id => "create_charity_president", :placeholder=> "President Name", :class=>"form-control", :required=>"true"
-          %br
-          = text_field :charity, :contact_email, :type=>"email",:id => "create_charity_email", :placeholder=> "Email Address", :class=>"form-control", :required=>"true"
-          %br
-          = text_field :charity, :charity_website, :type=>"url", :id => "create_charity_link", :class=>"form-control", :placeholder=>"Website", :required=>"true"
-          %br
-          %button.btn.btn-primary.btnblock{:type=>"submit"} Create!
+          %div.form-group
+            = text_field :charity, :name, :id => "create_charity_name", :placeholder => "Charity Name", :class=>"form-control", :required=>"true"
+            %br
+            = text_area :charity, :description, :id => "create_charity_description", :placeholder=> "Description", :class=>"form-control", :required=>"true"
+            %br
+            = text_field :charity, :president_name, :id => "create_charity_president", :placeholder=> "President Name", :class=>"form-control", :required=>"true"
+            %br
+            = text_field :charity, :contact_email, :type=>"email",:id => "create_charity_email", :placeholder=> "Email Address", :class=>"form-control", :required=>"true"
+            %br
+            = text_field :charity, :charity_website, :type=>"url", :id => "create_charity_link", :class=>"form-control", :placeholder=>"Website", :required=>"true"
+            %br
+            %button.btn.btn-primary.btnblock{:type=>"submit"} Create!

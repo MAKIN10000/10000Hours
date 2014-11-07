@@ -1,6 +1,5 @@
 # This file is app/controllers/users_controller.rb
 class UsersController < ApplicationController
-  before_filter :set_current_user
 
   def index
     @users = Users.all

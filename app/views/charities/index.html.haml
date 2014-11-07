@@ -1,17 +1,18 @@
 %div.container-fluid.col-md-8.center
   %h1 Charities
-  %table.table.table-hover.table-condensed
-    %thead
-      %tr
-        %th= 'Charity Name'
-        %th= 'President'
-        %th= 'Email'
-        %th= 'More'
-    %tbody
-      - @charities.each do |charity|
+  %div.table-responsive
+    %table.table.table-hover.table-condensed
+      %thead
         %tr
-          %td= charity.name
-          %td= charity.president_name
-          %td= charity.contact_email
-          %td= link_to "More info", charity_path(charity)
+          %th= 'Charity Name'
+          %th= 'President'
+          %th= 'Email'
+          %th= 'More'
+      %tbody
+        - @charities.each do |charity|
+          %tr
+            %td= charity.name
+            %td= charity.president_name
+            %td= charity.contact_email
+            %td= link_to "More info", charity_path(charity)
   = paginate @charities
