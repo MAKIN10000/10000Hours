@@ -17,7 +17,7 @@ class CharitiesController < ApplicationController
   end
 
   def index 
-    @charities = Charity.all
+    @charities = Charity.order(:name).page params[:page]
   end
 
   def show
