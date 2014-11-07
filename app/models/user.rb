@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   def User::create_user! (hash)
     session = SecureRandom.base64
     hash[:session_token]= session
+    hash[:image]= "/images/no-icon.jpg"
     User.create!(hash)
   end
 

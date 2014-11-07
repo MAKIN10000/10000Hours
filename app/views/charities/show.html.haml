@@ -1,12 +1,13 @@
-%h1 #{@charity.name} 
-
-%ul#details
-  %li
-    President: #{@charity.president_name}
-  %li
-    Email: #{@charity.contact_email}
-  %li
-    Website: #{@charity.charity_website}
-%h3 Description:
-
-%p#description= @charity.description
+%div.container-fluid.center.login 
+  %div.row
+    %div.center.col-xs-6.col-md-4.well
+      %h1 #{@charity.name} 
+      %dl
+        %dt President: 
+        %dd #{@charity.president_name}
+        %dt Email: 
+        %dd #{@charity.contact_email}
+        %dt Website: 
+        %dd #{@charity.charity_website}
+        %dt Description:
+        %dd #{@charity.description}

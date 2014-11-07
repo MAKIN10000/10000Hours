@@ -7,5 +7,6 @@ class AddFacebookFieldsToUser < ActiveRecord::Migration
     add_column :users, :image, :string
     add_column :users, :token, :string
     add_column :users, :expires_at, :datetime
+    add_column :users, :password_digest, :string
   end
 end

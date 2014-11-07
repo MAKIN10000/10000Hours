@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141104213611) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "password_digest"
     t.string   "first"
     t.string   "image"
     t.string   "token"
