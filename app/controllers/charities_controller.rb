@@ -25,4 +25,11 @@ class CharitiesController < ApplicationController
     @charity = Charity.find(id)
   end
 
+  def destroy
+    @charity = Charity.find(params[:id])
+    @charity.destroy
+    flash[:notice] = "Movie '#{@charity.name}' deleted."
+    redirect_to home_index_path
+  end
+
 end
