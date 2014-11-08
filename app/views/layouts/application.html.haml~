@@ -1,27 +1,52 @@
+<!DOCTYPE html>
 %html
   %head
     %title 10000 Hours
     <meta name="viewport" content="width=device-width, initial-scale=1">
     = stylesheet_link_tag 'application'
-    = stylesheet_link_tag 'carousel'
+    = stylesheet_link_tag 'custom'
     = javascript_include_tag 'application'
+    = javascript_include_tag "jquery_ujs"
     = csrf_meta_tags
 
+
   %body{:style => "padding-top: 50px;"}
-    %div.modal.fade{:id=>"loginModal", :tabindex=>"-1", :role=>"dialog", :aria=>{:labelledby=>"myModalLabel"}, :aria=>{:hidden=>"true"}}
-      %div.modal-dialog
-        %div.modal-content
-          %div.modal-header
-            =link_to 'x','', class: "close", data:{dismiss:"modal"}, aria:{hidden:"true"}
-            %h3{:id=>"myModalLabel"} Login Form
-          %div.modal-body
-            =form_tag login_create_path, :method => :post do 
-              =text_field :user, :user_id, :class => "form-control", :autocomplete=>"on",:type=>"text", :placeholder=>"User ID", :autofocus=>"true", :required=>"true"
-              %br
-              =text_field :user, :email, :class =>"form-control", :name=>"password", :type=>"email",:placeholder=>"Password", :required=>true
-              %br
-              =submit_tag 'Login', :class=> "btn btn-info"
-    %nav.navbar-default.navbar-fixed-top{:role=>"navigation", :style => "height: 50px;"}
+    - if !@current_user
+      %div.modal.fade{:id=>"loginModal", :tabindex=>"-1", :role=>"dialog", :aria=>{:labelledby=>"myModalLabel"}, :aria=>{:hidden=>"true"}}
+        %div.modal-dialog
+          %div.modal-content
+            %div.modal-header
+              =link_to '&times;'.html_safe,'', class: "close", data:{dismiss:"modal"}, aria:{hidden:"true"}
+              %h3{:id=>"myModalLabel"} Login Form
+            %div.modal-body
+              =form_tag login_create_path, :method => :post do 
+                =text_field :user, :user_id, :class => "form-control", :autocomplete=>"on",:type=>"text", :placeholder=>"User ID", :autofocus=>"true", :required=>"true"
+                %br
+                =text_field :user, :password, :class =>"form-control", :type=>"password",:placeholder=>"Password", :required=>"true"
+                %br
+                =submit_tag 'Login', :class=> "btn btn-info"
+            %div.modal-footer
+              =button_to 'login with facebook', '/auth/facebook', class: "facebook_button"
+      %div.modal.fade{:id=>"createUserModal", :tabindex=>"-1", :role=>"dialog", :aria=>{:labelledby=>"myModalLabel"}, :aria=>{:hidden=>"true"}}
+        %div.modal-dialog
+          %div.modal-content
+            %div.modal-header
+              =link_to '&times;'.html_safe,'', class: "close", data:{dismiss:"modal"}, aria:{hidden:"true"}
+              %h3{:id=>"myModalCreate"} Create Account
+            %div.modal-body
+              =form_tag users_path, :method => :post do 
+                =text_field :user, :user_id, :class => "form-control", :autocomplete=>"on",:type=>"text", :placeholder=>"User ID", :autofocus=>"true", :required=>"true"
+                %br
+                =text_field :user, :email, :class => "form-control", :autocomplete=>"on",:type=>"text", :placeholder=>"Email", :autofocus=>"true", :required=>"true"
+                %br
+                =text_field :user, :password, :class =>"form-control", :type=>"password",:placeholder=>"Password", :required=>"true"
+                %br
+                =text_field :user, :password_confirmation, :class =>"form-control",  :type=>"password",:placeholder=>"Confirm Password", :required=>"true"
+                %br
+                =submit_tag 'Create Account', :class=> "btn btn-info"
+            %div.modal-footer
+              =button_to 'login with facebook', '/auth/facebook', class: "facebook_button"
+    %nav.navbar-default.navbar-fixed-top{:role=>"navigation"}
       %div.container
         %div.navbar-header
           %button.navbar-toggle.collapsed{ :type=>"button", :data=>{:toggle=>"collapse",:target=>"#navbar"}, :aria=>{:expanded=>"false",:controls=>"navbar"}}
@@ -29,10 +54,10 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          =link_to '10000 Hours', home_index_path, class: 'navbar-brand'
+          =link_to '10000 Hours', home_index_path, class: 'navbar-brand', style: "height: auto"
         %div.navbar-collapse.collapse{:id=>'navbar'}
           %ul.nav.navbar-nav
-            %li.active=link_to 'Home', home_index_path
+            %li=link_to 'Home', home_index_path
             %li=link_to 'My Goals', '#' 
             %li=link_to 'Friends', '#'
             %li.dropdown
@@ -47,6 +72,18 @@
                 %li=link_to 'Recommend Charity', '#'
                 %li=link_to 'Review a Charity', '#'
           %ul.nav.navbar-nav.navbar-right
-            %li=link_to 'Sign In', '#loginModal', data: {toggle: "modal"}
-            %li=link_to 'Register', '#'
+            - if !@current_user
+              %li=link_to 'Sign In', '#loginModal', data: {toggle: "modal"}
+              %li=link_to 'Register', '#createUserModal', data: {toggle: "modal"}
+            - elsif @current_user
+              %li.dropdown
+                =link_to "#{@display_name} <img class='img-circle' style='height: 40px; margin:-10px auto;' src='#{@current_user[:image]}'>".html_safe, '#', class: "dropdown-toggle", data:{toggle: "dropdown"}
+                %ul.dropdown-menu{:role=>"menu"}
+                  %li=link_to 'Profile','#'
+                  %li=link_to 'Settings', '#'
+                  %li=link_to 'Messages <span class="badge">4</span>'.html_safe, '#'
+                  %li=link_to 'New Goal', '#'
+                  %li.divider
+                  %li=link_to 'Logout', logout_path, :method => :delete
+                  
     =yield
