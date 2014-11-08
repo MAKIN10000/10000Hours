@@ -22,6 +22,8 @@ gem 'omniauth-facebook'
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
+  gem 'rspec-rails'
+  gem 'simplecov'
 end
 group :assets do
   gem 'execjs'
