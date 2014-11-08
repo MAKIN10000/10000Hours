@@ -11,17 +11,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if( User.where("user_id = ?", params[:user][:user_id]).first != nil )
-      user = User.find_by_user_id(params[:user][:user_id])
-      if( user.authenticate params[:user][:password] )
-        session[:session_token] = user.session_token
-        flash[:success] = "Logged in"
-        redirect_to home_index_path
-        return
-      else
-        flash[:warning] = "Login failed"
-        redirect_to login_path
-      end
+    user = User.find_by_user_id(params[:user][:user_id])
+    if( not user.nil?) && ( user.authenticate params[:user][:password] )
+      session[:session_token] = user.session_token
+      flash[:success] = "Logged in"
+      redirect_to home_index_path
+      return
     else
       flash[:warning] = "Login failed"
       redirect_to login_path
