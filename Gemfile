@@ -24,6 +24,7 @@ group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
   gem 'simplecov'
+  gem 'database_cleaner'
 end
 group :assets do
   gem 'execjs'
