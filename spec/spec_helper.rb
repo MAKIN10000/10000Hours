@@ -33,6 +33,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
     load "#{Rails.root}/db/seeds.rb"
+    OmniAuth.config.test_mode = true
   end
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
