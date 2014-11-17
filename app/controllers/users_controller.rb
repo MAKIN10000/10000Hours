@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       user = User.new(params[:user])
       if user.valid?
         @user = User.create_user! params[:user]
-        UserNotifier.send_signup_email(@user).deliver
+        #UserNotifier.send_signup_email(@user).deliver
         flash[:success] = "Welcome #{@user.user_id}. Your account has been created."
         redirect_to login_path
       else
