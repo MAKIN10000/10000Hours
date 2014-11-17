@@ -17,11 +17,19 @@ class CharitiesController < ApplicationController
   end
 
   def index 
-    @charities = Charity.all
+    @charities = Charity.order(:name).page params[:page]
   end
 
   def show
-    
+    id = params[:id] 
+    @charity = Charity.find(id)
+  end
+
+  def destroy
+    @charity = Charity.find(params[:id])
+    @charity.destroy
+    flash[:notice] = "Movie '#{@charity.title}' deleted."
+    redirect_to home_index_path
   end
 
 end

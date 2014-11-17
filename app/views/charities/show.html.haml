@@ -11,3 +11,5 @@
         %dd #{@charity.charity_website}
         %dt Description:
         %dd #{@charity.description}
+
+= button_to 'Delete', charity_path(@charity), :method => :delete, :confirm => 'Are you sure?'
