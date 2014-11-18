@@ -8,23 +8,14 @@
   %div.col-md-6
     %ul.nav.nav-tabs{:id=>"myTab"}
       %li.active 
-        =link_to 'Goals', "#goals", data:{toggle:"tab"}
-      %li 
         =link_to 'Friends', "#friends", data:{toggle:"tab"}
+      %li 
+        =link_to 'Goals', "#goal", data:{toggle:"tab"}, id:"goals_tab"
       %li 
         =link_to 'Settings',"#settings", data:{toggle:"tab"}
     %div.tab-content
-      %div.tab-pane.active{:id=>"goals"}
-        %ul.list-group
-          %li.list-group-item 
-            %h5 Web Design
-            %div.progress
-              %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"45", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: 45%"}
-                %span.sr-only 45% Complete
-          %li.list-group-item 
-            %div.progress
-              %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"45", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: 45%"}
-                %span.sr-only 45% Complete
+      %div.tab-pane.active{:id=>"goal"}
+        %ul.list-group{:id=>"goals",:data=>{:user=>@user.id}}
       %div.tab-pane{:id=>"friends"}
       %div.tab-pane{:id=>"settings"}
         %div.col-md-8.col-md-offset-2

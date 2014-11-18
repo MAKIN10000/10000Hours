@@ -7,4 +7,7 @@ class Goal < ActiveRecord::Base
     
     Goal.create!(goalHash) 
   end
+  def time_spent
+    return((Time.new - Time.at(self.created_at))/10000.hour)
+  end
 end
