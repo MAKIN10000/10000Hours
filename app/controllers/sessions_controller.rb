@@ -1,6 +1,5 @@
 # This file is app/controllers/users_controller.rb
 class SessionsController < ApplicationController
-    before_filter :set_current_user
   def new
     #render 'new' template
   end
