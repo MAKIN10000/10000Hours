@@ -1,13 +1,21 @@
 # This file is app/controllers/users_controller.rb
 class UsersController < ApplicationController
-
   def index
     @users = User.all
   end
 
   def show
-    id = params[:id] 
-    @user = User.find(id)
+    id = params[:id]
+    if(!@current_user.nil?)
+      @user = User.find(id)
+      unless @current_user == @user
+        flash[:warning] = "you do not have permission!!"
+        redirect_to home_index_path
+      end
+    else
+      flash[:warning] = "You must login to do that!"
+      redirect_to login_path
+    end
   end
 
   def new

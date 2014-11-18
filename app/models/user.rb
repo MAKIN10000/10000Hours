@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.name = auth.info.name
       user.first = auth.info.first_name
-      user.image = auth.info.image
+      user.image = auth.info.image + "?type=large"
       user.token = auth.credentials.token
       user.password = user.password_confirmation = SecureRandom.base64 
       user.session_token = SecureRandom.base64
