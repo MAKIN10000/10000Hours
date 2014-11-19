@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141118215921) do
   create_table "goals", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "owner",       limit: 255
+    t.string  "owner"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

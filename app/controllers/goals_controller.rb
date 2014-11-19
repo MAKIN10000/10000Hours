@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   end
 
   def create
-    if Goal.exists?({:title => params[:goal][:title], :owner => @current_user.id})
+    if Goal.exists?({:title => params[:goal][:title], :owner => @current_user.session_token})
         flash[:notice] = "Goal already exists"
         puts "This goal already exists"
         redirect_to goals_path
