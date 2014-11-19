@@ -10,7 +10,7 @@ class GoalsController < ApplicationController
         redirect_to goals_path
     else
       hash = params[:goal]
-      hash[:owner] = @current_user.id
+      hash[:owner] = @current_user.session_token
       @goal = Goal.create_goal! hash
       flash[:notice] = "#{@goal.title} was successfully created"
       redirect_to goals_path
