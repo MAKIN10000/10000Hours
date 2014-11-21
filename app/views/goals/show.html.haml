@@ -1,12 +1,10 @@
-%h1 #{@goal.title} 
-
-%ul#details
-  %li
-    Owner: #{@goal.owner}
-%h3 Description:
-
-%p#description= @goal.description
-
-
-
+%div.container-fluid.center.login 
+  %div.row
+    %div.center.well
+      %h1 #{@goal.title} 
+      %dl
+        %dt Description: 
+        %dd #{@goal.description}
+        %dt Date Created: 
+        %dd #{@goal.created_at}
 = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'

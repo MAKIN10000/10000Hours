@@ -4,13 +4,13 @@ class GoalsController < ApplicationController
   end
 
   def create
-    if Goal.exists?({:title => params[:goal][:title], :owner => @current_user.session_token})
+    if Goal.exists?({:title => params[:goal][:title], :owner => @current_user.uid})
         flash[:notice] = "Goal already exists"
         puts "This goal already exists"
         redirect_to goals_path
     else
       hash = params[:goal]
-      hash[:owner] = @current_user.session_token
+      hash[:owner] = @current_user.uid
       @goal = Goal.create_goal! hash
       flash[:notice] = "#{@goal.title} was successfully created"
       redirect_to goals_path
@@ -37,7 +37,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal = Goal.find(params[:id])
     @goal.destroy
-    flash[:notice] = "Movie '#{@goal.title}' deleted."
+    flash[:notice] = "#{@goal.title} deleted."
     redirect_to goals_path
   end
 
