@@ -1,15 +1,13 @@
-%div.container.col-md-8.center
+%div.container.col-md-6.center
   %h1 Goals
-  %table.table.table-hover.table-condensed
-    %thead
-      %tr
-        %th= 'Title'
-    %tbody
-      - if @goal != nil
-        - @goal.each do |g|
-          %tr
-            %td= g.title
-            %td= link_to "More info", goal_path(g)
-        = paginate @goal
+  %ul.list-group  
+  - if @goal != nil
+    - @goal.each do |g|
+      %li.list-group-item 
+        %h5 "#{g.title}" 
+        %div.progress
+          %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.time_spent}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.time_spent}%"}
+        = link_to "More info", goal_path(g)
+  = paginate @goal
 
 
