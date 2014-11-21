@@ -8,6 +8,7 @@
         %dt Date Created: 
         %dd #{@goal.created_at}
         %dt Owner:
-        -if (user = User.find_by_uid(@goal.owner) && !user.nil? && user.provider == 'facebook')
-        %dd #{User.find_by_uid(@goal.owner).name}
+        - owner = User.find_by_uid(@goal.owner)
+        - unless(owner.nil?)
+          %dd #{owner.name}
 = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'
