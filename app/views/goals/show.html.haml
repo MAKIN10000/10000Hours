@@ -8,5 +8,5 @@
         %dt Date Created: 
         %dd #{@goal.created_at}
         %dt Owner:
-        %dd print_attribute(#{User.find_by_uid(@goal.owner).user_id}, 'No Owner!')
+        %dd #{User.find_by_uid(@goal.owner).user_id rescue nil }
 = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'
