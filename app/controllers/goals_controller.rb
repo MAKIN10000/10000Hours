@@ -21,6 +21,7 @@ class GoalsController < ApplicationController
   def index 
     @goal = Goal.order(:title).page params[:page]
   end
+
   def list
     id = params[:id]
     @goal = Goal.where(:owner=>id).order(:title).page params[:page]
