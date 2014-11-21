@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
     session = SecureRandom.base64
     uid = SecureRandom.base64 + hash[:user_id]
     hash[:session_token]= session
-    hash[:uid] = uid 
+    hash[:uid] = uid
+    hash[:name] = hash[:user_id]
     hash[:image]= "/images/no-icon.jpg"
     User.create!(hash)
   end
