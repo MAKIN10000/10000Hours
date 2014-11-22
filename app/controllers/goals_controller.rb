@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
         redirect_to goals_path
     else
       hash = params[:goal]
-      @goal = Goal.create_goal! hash
+      @goal = @current_user.goals.create!(hash) 
       flash[:notice] = "#{@goal.title} was successfully created"
       redirect_to goals_path
     end

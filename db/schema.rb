@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118215921) do
+ActiveRecord::Schema.define(version: 20141122011744) do
 
   create_table "charities", force: true do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141118215921) do
   create_table "goals", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.string  "owner"
+    t.belongs_to :user
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20141118215921) do
     t.string   "image"
     t.string   "token"
     t.datetime "expires_at"
+    t.integer  "goal_id"
   end
+
 
 end
