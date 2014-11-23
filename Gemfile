@@ -13,6 +13,7 @@ gem 'coffee-rails'
 gem 'bcrypt'
 gem 'bcrypt-ruby', '~>3.0.0'
 gem 'kaminari'
+gem 'sendgrid'
 # use Haml for templates
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.0'
