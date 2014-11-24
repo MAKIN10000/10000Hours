@@ -2,12 +2,37 @@
 %div.col-md-8
   - if @goal != nil
     - @goal.each do |g|
-      %div.panel.panel-default
-        %div.panel-heading{ :role=>"tab", :id=>"#{g.title}"}
-          %h4.panel-title
-            =link_to "#{g.title}", "#_#{g.title}", class: "collapsed", data:{toggle:"collapse"},aria:{expanded:"false",controls:"#{g.title}"}
-        %div.panel-collapse.collapse{ :id=>"_#{g.title}", :role=>"tabpanel", :aria=>{:labelledby=>"#{g.title}"}}
-          %div.panel-body
-            %div.progress
-              %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.time_spent}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.time_spent}%"}
+      - if (g.percent_time >= 100)
+        %div.panel.panel-danger
+          %div.panel-heading{ :role=>"tab", :id=>"#{g.title}"}
+            %h4.panel-title
+              =link_to "#{g.title}<span class='glyphicon glyphicon-remove-circle pull-right'></span>".html_safe, "#_#{g.title}", class: "collapsed", data:{toggle:"collapse"},aria:{expanded:"false",controls:"#{g.title}"}
+          %div.panel-collapse.collapse{ :id=>"_#{g.title}", :role=>"tabpanel", :aria=>{:labelledby=>"#{g.title}"}}
+            %div.panel-body
+              %p #{g.description}
+              %div.progress
+                %div.progress-bar.progress-bar-danger{:aria=>{:valuenow=>"100", :valuemin=>"0", :valuemax=>"100"}, :style=>"width:100%"}
+              = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'
+      - elsif (g.percent_time >= 75)
+        %div.panel.panel-warning
+          %div.panel-heading{ :role=>"tab", :id=>"#{g.title}"}
+            %h4.panel-title
+              =link_to "#{g.title} <span class='glyphicon glyphicon-warning-sign pull-right'></span>".html_safe, "#_#{g.title}", class: "collapsed", data:{toggle:"collapse"},aria:{expanded:"false",controls:"#{g.title}"}
+          %div.panel-collapse.collapse{ :id=>"_#{g.title}", :role=>"tabpanel", :aria=>{:labelledby=>"#{g.title}"}}
+            %div.panel-body
+              %p #{g.description}
+              %div.progress
+                %div.progress-bar.progress-bar-warning.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.percent_time}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.percent_time}%"}
+              = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'
+      -else
+        %div.panel.panel-primary
+          %div.panel-heading{ :role=>"tab", :id=>"#{g.title}"}
+            %h4.panel-title
+              =link_to "#{g.title} <span class='glyphicon glyphicon-road pull-right'></span>".html_safe, "#_#{g.title}", class: "collapsed", data:{toggle:"collapse"},aria:{expanded:"false",controls:"#{g.title}"}
+          %div.panel-collapse.collapse{ :id=>"_#{g.title}", :role=>"tabpanel", :aria=>{:labelledby=>"#{g.title}"}}
+            %div.panel-body
+              %p #{g.description}
+              %div.progress
+                %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.percent_time}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.percent_time}%"}
+              = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'
   = paginate @goal

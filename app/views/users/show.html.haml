@@ -8,11 +8,11 @@
   %div.col-md-6
     %ul.nav.nav-tabs{:id=>"myTab"}
       %li.active 
-        =link_to 'Friends', "#friends", data:{toggle:"tab"}
+        =link_to '<span class= "glyphicon glyphicon-heart"></span> Friends'.html_safe, "#friends", data:{toggle:"tab"}
       %li 
-        =link_to 'Goals', "#goal", data:{toggle:"tab"}, id:"goals_tab"
+        =link_to '<span class= "glyphicon glyphicon-star"></span> Goals'.html_safe, "#goal", data:{toggle:"tab"}, id:"goals_tab"
       %li 
-        =link_to 'Settings',"#settings", data:{toggle:"tab"}
+        =link_to '<span class= "glyphicon glyphicon-cog"></span> Settings'.html_safe,"#settings", data:{toggle:"tab"}
     %div.tab-content
       %div.tab-pane.active{:id=>"goal"}
         %ul.panel-group{:id=>"goals",:data=>{:user=>@user.uid},:aria=>{:multiselectable=>"true"},:role=>"tablist"}
