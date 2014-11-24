@@ -78,9 +78,11 @@
               %li.dropdown
                 =link_to "#{@display_name} <img class='img-circle' style='height: 40px; margin:-10px auto;' src='#{@current_user[:image]}'>".html_safe, '#', class: "dropdown-toggle", data:{toggle: "dropdown"}
                 %ul.dropdown-menu{:role=>"menu"}
-                  %li=link_to 'Profile', user_path(@current_user)
-                  %li=link_to 'Messages <span class="badge">4</span>'.html_safe, '#'
-                  %li=link_to 'New Goal', new_goal_path
+                  %li=link_to '<span class="glyphicon glyphicon-user"></span> Profile'.html_safe, user_path(@current_user)
+                  %li=link_to '<span class="glyphicon glyphicon-envelope"></span> Messages <span class="badge">4</span>'.html_safe, '#'
+                  %li=link_to '<span class="glyphicon glyphicon-heart"></span> New Goal'.html_safe, new_goal_path
                   %li.divider
-                  %li=button_to 'Logout', logout_path, :method => :delete, :class => "btn btn-link"
+                  -if(@current_user.role == 'admin')
+                    %li=link_to '<span class="glyphicon glyphicon-tower"></span> Admin Dashboard'.html_safe, '#'
+                  %li=button_to "Logout", logout_path, :method => :delete, :class => "btn btn-link text-center"
     =yield
