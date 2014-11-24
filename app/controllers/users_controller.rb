@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     id = params[:id]
     if(!@current_user.nil?)
       @user = User.find(id)
-      unless @current_user == @user
+      unless @current_user == @user || @current_user.role == "admin"
         flash[:warning] = "you do not have permission!!"
         redirect_to home_index_path
       end
