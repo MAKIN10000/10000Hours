@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122011744) do
+ActiveRecord::Schema.define(version: 20141124042352) do
 
   create_table "charities", force: true do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141122011744) do
     t.string   "token"
     t.datetime "expires_at"
     t.integer  "goal_id"
+    t.integer  "role",            default: 0
   end
 
 end
