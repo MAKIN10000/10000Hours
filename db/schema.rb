@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141122011744) do
   create_table "goals", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.belongs_to :user
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +47,5 @@ ActiveRecord::Schema.define(version: 20141122011744) do
     t.datetime "expires_at"
     t.integer  "goal_id"
   end
-
 
 end
