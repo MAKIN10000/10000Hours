@@ -9,5 +9,7 @@
         %dd #{@goal.created_at}
         %dt Owner:
         %dd #{@goal.user.name}
+        %dd 
+          %img.img-thumbnail.img-responsive{:src=>"#{@goal.user.image}", :style=>"max-width:150px;"}
       - if @current_user.role == 1
         = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'
