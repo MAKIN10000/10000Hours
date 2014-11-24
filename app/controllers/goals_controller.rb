@@ -22,7 +22,7 @@ class GoalsController < ApplicationController
 
   def list
     id = params[:id]
-    @goal = @current_user.goals.order(:title).page params[:page]
+    @goal = @current_user.goals.order(:created_at).page params[:page]
     render :partial => "index", :object=>@goal if request.xhr?
   end
 

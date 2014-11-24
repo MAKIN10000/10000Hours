@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:session_token] && User.find_by_session_token(session[:session_token])
     if !@current_user.nil? 
       @display_name = @current_user[:first] || @current_user[:user_id]
-      @access = @current_user[:role]
     end
   end
   before_filter :set_current_user
