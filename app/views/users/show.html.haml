@@ -15,7 +15,7 @@
         =link_to 'Settings',"#settings", data:{toggle:"tab"}
     %div.tab-content
       %div.tab-pane.active{:id=>"goal"}
-        %ul.list-group{:id=>"goals",:data=>{:user=>@user.id}}
+        %ul.panel-group{:id=>"goals",:data=>{:user=>@user.uid},:aria=>{:multiselectable=>"true"},:role=>"tablist"}
       %div.tab-pane{:id=>"friends"}
       %div.tab-pane{:id=>"settings"}
         %div.col-md-8.col-md-offset-2

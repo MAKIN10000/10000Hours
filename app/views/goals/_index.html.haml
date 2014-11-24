@@ -1,8 +1,13 @@
-- if @goal != nil
-  - @goal.each do |g|
-    %li.list-group-item 
-      %h5 "#{g.title}" 
-      %div.progress
-        %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.time_spent}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.time_spent}%"}
-      = link_to "More info", goal_path(g)
+%br
+%div.col-md-8
+  - if @goal != nil
+    - @goal.each do |g|
+      %div.panel.panel-default
+        %div.panel-heading{ :role=>"tab", :id=>"#{g.title}"}
+          %h4.panel-title
+            =link_to "#{g.title}", "#_#{g.title}", class: "collapsed", data:{toggle:"collapse"},aria:{expanded:"false",controls:"#{g.title}"}
+        %div.panel-collapse.collapse{ :id=>"_#{g.title}", :role=>"tabpanel", :aria=>{:labelledby=>"#{g.title}"}}
+          %div.panel-body
+            %div.progress
+              %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.time_spent}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.time_spent}%"}
   = paginate @goal

@@ -4,8 +4,6 @@ class UserNotifier < ActionMailer::Base
   
   def send_signup_email(user)
     @user = user
-    puts "ASDFAWFEJASFASFAFE          #{@user.email}"
-  	
   	mail(:to => "#{@user.email}", :subject => "Thank you for signing up with us!", template_path: 'Usernotifier')
   end
 end

@@ -82,6 +82,5 @@
                   %li=link_to 'Messages <span class="badge">4</span>'.html_safe, '#'
                   %li=link_to 'New Goal', new_goal_path
                   %li.divider
-                  %li=link_to 'Logout', logout_path, :method => :delete
-                  
+                  %li=button_to 'Logout', logout_path, :method => :delete, :class => "btn btn-link"
     =yield
