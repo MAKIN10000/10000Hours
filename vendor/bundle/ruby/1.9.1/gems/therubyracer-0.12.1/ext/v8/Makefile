@@ -69,11 +69,11 @@ optflags = -O3
 debugflags = -ggdb
 warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings  
 CFLAGS   = -fPIC $(cflags)  -fPIC $(ARCH_FLAG)
-INCFLAGS = -I. -I/home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/libv8-3.16.14.7/vendor/v8/include -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
+INCFLAGS = -I. -I/home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/libv8-3.16.14.7/vendor/v8/include -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = -D_FILE_OFFSET_BITS=64
 CPPFLAGS =   $(DEFS) $(cppflags) -Wall -g -rdynamic
 CXXFLAGS = $(CFLAGS) $(cxxflags)
-ldflags  = /home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/libv8-3.16.14.7/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_base.a /home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/libv8-3.16.14.7/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_snapshot.a -L.  -rdynamic -Wl,-export-dynamic
+ldflags  = /home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/libv8-3.16.14.7/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_base.a /home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/libv8-3.16.14.7/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_snapshot.a -L.  -rdynamic -Wl,-export-dynamic
 dldflags =  
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -128,8 +128,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = /home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/therubyracer-0.12.1/lib$(target_prefix)
-RUBYARCHDIR = /home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/therubyracer-0.12.1/lib$(target_prefix)
+RUBYLIBDIR = /home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/therubyracer-0.12.1/lib$(target_prefix)
+RUBYARCHDIR = /home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/therubyracer-0.12.1/lib$(target_prefix)
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 

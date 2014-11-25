@@ -1,0 +1,18 @@
+%section
+  %div.container.login
+    %div.row
+      %div.center.col-xs-6.col-md-4.well
+        %legend Create A Goal
+        = form_tag goals_path, :method => :post do
+          = text_field :goal, :title, :id => "create_goal_title", :placeholder => "Goal Title", :class=>"form-control", :required=>"true"
+          %br
+          = text_area :goal, :description, :id => "create_goal_description", :placeholder=> "Description", :class=>"form-control", :required=>"true"
+          %br
+          = text_field :goal, :pledge_amount, :id => "create_goal_pledge_amount", :placeholder => "Pledge Amount", :class=> "form-control", :required => "true"
+          %br
+          %select
+            - @charities.each do |charity|
+              %option{:value => "#{charity.id}", :selected => params[:x] == "#{charity.name}"} #{charity.name}
+          %br
+          %br
+          %button.btn.btn-primary.btnblock{:type=>"submit"} Create!

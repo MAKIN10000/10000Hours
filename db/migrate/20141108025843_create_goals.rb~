@@ -1,0 +1,11 @@
+class CreateGoals < ActiveRecord::Migration
+  def change
+    create_table :goals do |t|
+      t.string :title
+      t.float :pledge_amount
+      t.text :description
+      t.string :owner
+      t.timestamps
+    end
+  end
+end

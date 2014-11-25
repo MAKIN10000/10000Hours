@@ -8,4 +8,11 @@
           %br
           = text_area :goal, :description, :id => "create_goal_description", :placeholder=> "Description", :class=>"form-control", :required=>"true"
           %br
+          = text_field :goal, :pledge_amount, :id => "create_goal_pledge_amount", :placeholder => "Pledge Amount", :class=> "form-control", :required => "true"
+          %br
+          %select
+            - @charities.each do |charity|
+              %option{:value => "#{charity.id}", :selected => params[:x] == "#{charity.id}"} #{charity.name}
+          %br
+          %br
           %button.btn.btn-primary.btnblock{:type=>"submit"} Create!

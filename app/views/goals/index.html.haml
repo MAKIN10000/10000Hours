@@ -5,11 +5,13 @@
     %thead
       %tr
         %th= 'Title'
+        %th= 'Pledge'
     %tbody
       - if @goal != nil
         - @goal.each do |g|
           %tr
             %td= g.title
+            %td= g.pledge_amount
             %td= link_to "More info", goal_path(g)
         = paginate @goal
 

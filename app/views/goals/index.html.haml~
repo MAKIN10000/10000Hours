@@ -1,0 +1,16 @@
+%div.container.col-md-8.center
+  %h1 My Goals
+  = link_to 'Add New Goal', new_goal_path
+  %table.table.table-hover.table-condensed
+    %thead
+      %tr
+        %th= 'Title'
+    %tbody
+      - if @goal != nil
+        - @goal.each do |g|
+          %tr
+            %td= g.title
+            %td= link_to "More info", goal_path(g)
+        = paginate @goal
+
+

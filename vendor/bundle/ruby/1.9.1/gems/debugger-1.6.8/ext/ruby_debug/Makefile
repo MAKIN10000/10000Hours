@@ -71,7 +71,7 @@ warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long 
 CFLAGS   = -fPIC $(cflags)  -fPIC $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = -D_FILE_OFFSET_BITS=64
-CPPFLAGS = -DHAVE_RB_METHOD_ENTRY_T_CALLED_ID -DHAVE_ST_CALLED_ID -DHAVE_VM_CORE_H -DHAVE_ISEQ_H -DHAVE_INSNS_INC -DHAVE_INSNS_INFO_INC -DHAVE_EVAL_INTERN_H -DHAVE_TYPE_STRUCT_ISEQ_INSN_INFO_ENTRY -DRB_ISEQ_COMPILE_5ARGS -I/home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/debugger-ruby_core_source-1.3.5/lib/debugger/ruby_core_source/ruby-1.9.3-p448
+CPPFLAGS = -DHAVE_RB_METHOD_ENTRY_T_CALLED_ID -DHAVE_ST_CALLED_ID -DHAVE_VM_CORE_H -DHAVE_ISEQ_H -DHAVE_INSNS_INC -DHAVE_INSNS_INFO_INC -DHAVE_EVAL_INTERN_H -DHAVE_TYPE_STRUCT_ISEQ_INSN_INFO_ENTRY -DRB_ISEQ_COMPILE_5ARGS -I/home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/debugger-ruby_core_source-1.3.5/lib/debugger/ruby_core_source/ruby-1.9.3-p448
 CXXFLAGS = $(CFLAGS) $(cxxflags)
 ldflags  = -L.  -rdynamic -Wl,-export-dynamic
 dldflags =  
@@ -128,8 +128,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = /home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/debugger-1.6.8/lib$(target_prefix)
-RUBYARCHDIR = /home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/debugger-1.6.8/lib$(target_prefix)
+RUBYLIBDIR = /home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/debugger-1.6.8/lib$(target_prefix)
+RUBYARCHDIR = /home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/debugger-1.6.8/lib$(target_prefix)
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 

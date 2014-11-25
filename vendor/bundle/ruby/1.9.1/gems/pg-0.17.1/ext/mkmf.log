@@ -760,8 +760,8 @@ checked program was:
 "gcc -o conftest -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/i686-linux -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I. -I/usr/include/postgresql  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fPIC conftest.c  -L. -L/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -Wl,-R/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -L/usr/lib -Wl,-R/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lpq  '-Wl,-rpath,/../lib' -Wl,-R -Wl,/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -L/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -lruby -lpq  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:4:1: warning: implicit declaration of function ‘PQsetSingleRowMode’ [-Wimplicit-function-declaration]
-/tmp/ccZ9chSk.o: In function `t':
-/home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/pg-0.17.1/ext/conftest.c:4: undefined reference to `PQsetSingleRowMode'
+/tmp/cceAGWfQ.o: In function `t':
+/home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/pg-0.17.1/ext/conftest.c:4: undefined reference to `PQsetSingleRowMode'
 collect2: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -851,8 +851,8 @@ checked program was:
 "gcc -o conftest -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/i686-linux -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I. -I/usr/include/postgresql  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fPIC conftest.c  -L. -L/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -Wl,-R/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -L/usr/lib -Wl,-R/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lpq  '-Wl,-rpath,/../lib' -Wl,-R -Wl,/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -L/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -lruby -lpq  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:4:1: warning: implicit declaration of function ‘rb_enc_alias’ [-Wimplicit-function-declaration]
-/tmp/cctWwXVG.o: In function `t':
-/home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/pg-0.17.1/ext/conftest.c:4: undefined reference to `rb_enc_alias'
+/tmp/ccNX3db2.o: In function `t':
+/home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/pg-0.17.1/ext/conftest.c:4: undefined reference to `rb_enc_alias'
 collect2: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -1009,8 +1009,8 @@ checked program was:
 "gcc -o conftest -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/i686-linux -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I. -I/usr/include/postgresql  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fPIC conftest.c  -L. -L/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -Wl,-R/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -L/usr/lib -Wl,-R/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lpq  '-Wl,-rpath,/../lib' -Wl,-R -Wl,/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -L/home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib -lruby -lpq  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:4:1: warning: implicit declaration of function ‘rb_w32_wrap_io_handle’ [-Wimplicit-function-declaration]
-/tmp/ccvqSqS9.o: In function `t':
-/home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/pg-0.17.1/ext/conftest.c:4: undefined reference to `rb_w32_wrap_io_handle'
+/tmp/ccZ7gBvq.o: In function `t':
+/home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/pg-0.17.1/ext/conftest.c:4: undefined reference to `rb_w32_wrap_io_handle'
 collect2: ld returned 1 exit status
 checked program was:
 /* begin */

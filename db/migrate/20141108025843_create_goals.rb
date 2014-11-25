@@ -4,7 +4,6 @@ class CreateGoals < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :owner
-
       t.timestamps
     end
   end

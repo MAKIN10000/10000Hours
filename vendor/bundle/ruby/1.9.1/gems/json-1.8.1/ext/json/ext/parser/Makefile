@@ -128,8 +128,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = /home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/json-1.8.1/lib$(target_prefix)
-RUBYARCHDIR = /home/saasbook/10000hours/vendor/bundle/ruby/1.9.1/gems/json-1.8.1/lib$(target_prefix)
+RUBYLIBDIR = /home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/json-1.8.1/lib$(target_prefix)
+RUBYARCHDIR = /home/saasbook/Documents/Project/vendor/bundle/ruby/1.9.1/gems/json-1.8.1/lib$(target_prefix)
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 
