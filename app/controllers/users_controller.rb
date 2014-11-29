@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   def index
     if(@current_user.role == "admin")
-      @users = User.all
+      @users = User.all.order(:user_id)
     else
       redirect_to home_index_path
     end
