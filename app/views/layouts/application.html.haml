@@ -83,6 +83,6 @@
                   %li=link_to '<span class="glyphicon glyphicon-heart"></span> New Goal'.html_safe, new_goal_path
                   %li.divider
                   -if(@current_user.role == 'admin')
-                    %li=link_to '<span class="glyphicon glyphicon-tower"></span> Admin Dashboard'.html_safe, '#'
+                    %li=link_to '<span class="glyphicon glyphicon-tower"></span> Admin Dashboard'.html_safe, users_path
                   %li=button_to "Logout", logout_path, :method => :delete, :class => "btn btn-link text-center"
     =yield
