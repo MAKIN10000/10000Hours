@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   def self.create_user! (hash)
     session = SecureRandom.base64
-    uid = SecureRandom.base64 + hash[:user_id]
+    uid = SecureRandom.uuid + hash[:user_id]
     hash[:session_token]= session
     hash[:uid] = uid
     hash[:name] = hash[:user_id]
