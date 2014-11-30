@@ -35,4 +35,3 @@
               %div.progress
                 %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.percent_time}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.percent_time}%"}
               = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?'
-  = paginate @goal

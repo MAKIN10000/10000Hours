@@ -17,13 +17,13 @@ class GoalsController < ApplicationController
   end
 
   def index 
-    @goal = Goal.order(:title).page params[:page]
+    @goal = Goal.all
   end
 
   def list
     id = params[:id]
     user = User.find_by_uid(id)
-    @goal = user.goals.order(:created_at).page params[:page]
+    @goal = user.goals.order(:created_at)
     render :partial => "index", :object=>@goal if request.xhr?
   end
 
