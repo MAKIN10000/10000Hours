@@ -44,4 +44,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if (@current_user.role == 'admin')
+      @user = User.find(params[:id])
+      if(@user.destroy)
+        flash[:notice] = "#{@user.user_id} deleted."
+        redirect_to users_path
+      else
+        flash[:notice] = "Could not delete user"
+        redirect_to users_path
+      end
+    else
+      flash[:warning] = "You do not have permission!"
+      redirect_to home_index_path
+    
+    end
+  end
 end
