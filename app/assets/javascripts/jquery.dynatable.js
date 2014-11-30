@@ -1217,11 +1217,9 @@
         .bind(settings.inputs.queryEvent, function() {
           obj.queries.runSearch($(this).val());
         })
-        .bind('keypress', function(e) {
-          if (e.which == 13) {
+        .bind('keyup', function(e) {
             obj.queries.runSearch($(this).val());
             e.preventDefault();
-          }
         });
       return $searchSpan;
     };
@@ -1340,7 +1338,7 @@
             (pages + 1) - settings.inputs.paginationGap[3]
           ];
 
-      pageLinks += '<li><span>Pages: </span></li>';
+      //pageLinks += '<li><span>Pages: </span></li>';
 
       for (var i = 1; i <= pages; i++) {
         if ( (i > breaks[0] && i < breaks[1]) || (i > breaks[2] && i < breaks[3])) {
