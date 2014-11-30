@@ -12,7 +12,6 @@ gem 'sass-rails',   '>= 3.2.3'
 gem 'coffee-rails'
 gem 'bcrypt'
 gem 'bcrypt-ruby', '~>3.0.0'
-gem 'kaminari'
 gem 'sendgrid'
 # use Haml for templates
 gem 'haml'
