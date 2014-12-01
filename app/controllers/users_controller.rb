@@ -60,4 +60,25 @@ class UsersController < ApplicationController
     
     end
   end
+  def update
+    @user = User.find params[:id]
+    @hash = {}
+    params[:user].each do |key, value|
+      unless(value.nil? || value == '')
+        @hash[key] = value
+      end
+    end
+    if(@current_user == @user || @current_user.role == "admin")
+#if(
+      puts(@hash)
+      @user.update!(@hash)
+#      //)
+      redirect_to user_path(@user)
+#      else
+#        redirect_to home_index_path
+#      end
+#    else
+#      redirect_to home_index_path
+    end
+  end
 end
