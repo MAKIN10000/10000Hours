@@ -2,14 +2,18 @@
   %div.col-md-4.col-md-offset-1
     %div.row
       %ul.list-group
-      %h1.text-center #{@user.user_id}
+      %h1.text-center #{@user.name}
       %img.img-thumbnail.img-responsive.center-block{:src=>"#{@user.image}", :style=>"max-width:250px;"}
+      %h4.text-center Username:
+      %p.text-center #{@user.user_id}
       %h4.text-center Email:
       %p.text-center #{@user.email}
       %h4.text-center Access Level: 
       %p.text-center #{@user.role}
-      %h4.text-center Active Since:
+      %h5.text-center Active Since:
       %p.text-center #{@user.created_at.to_formatted_s(:long_ordinal)}
+      %h5.text-center Last Updated:
+      %p.text-center #{@user.updated_at.to_formatted_s(:long_ordinal)}
   %div.col-md-6
     %ul.nav.nav-tabs.nav-justified{:id=>"myTab"}
       %li.active 

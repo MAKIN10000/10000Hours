@@ -69,16 +69,13 @@ class UsersController < ApplicationController
       end
     end
     if(@current_user == @user || @current_user.role == "admin")
-#if(
-      puts(@hash)
-      @user.update!(@hash)
-#      //)
-      redirect_to user_path(@user)
-#      else
-#        redirect_to home_index_path
-#      end
-#    else
-#      redirect_to home_index_path
+      if(@user.update(@hash))
+        redirect_to user_path(@user)
+      else
+        redirect_to home_index_path
+      end
+    else
+      redirect_to home_index_path
     end
   end
 end
