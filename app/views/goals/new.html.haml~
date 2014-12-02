@@ -10,9 +10,9 @@
           %br
           = text_field :goal, :pledge_amount, :id => "create_goal_pledge_amount", :placeholder => "Pledge Amount", :class=> "form-control", :required => "true"
           %br
-          %select
+          %select{:name => "charity_dropdown"}
             - @charities.each do |charity|
-              %option{:value => "#{charity.id}", :selected => params[:x] == "#{charity.name}"} #{charity.name}
+              %option{:id => "#{charity.id}", :value => "#{charity.id}", :selected => params[:x] == "#{charity.id}"} #{charity.name}
           %br
           %br
           %button.btn.btn-primary.btnblock{:type=>"submit"} Create!
