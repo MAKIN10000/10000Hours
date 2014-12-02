@@ -1,5 +1,5 @@
 class Goal < ActiveRecord::Base
-  attr_accessible :title, :description, :owner, :time
+  attr_accessible :title, :description, :owner, :time, :pledge_amount
   belongs_to :user
   has_one :charity
 
