@@ -1,14 +1,18 @@
 # This file is app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    if(@current_user.role == "admin")
+      @users = User.all.order(:user_id)
+    else
+      redirect_to home_index_path
+    end
   end
 
   def show
     id = params[:id]
     if(!@current_user.nil?)
       @user = User.find(id)
-      unless @current_user == @user
+      unless @current_user == @user || @current_user.role == "admin"
         flash[:warning] = "you do not have permission!!"
         redirect_to home_index_path
       end
@@ -30,8 +34,7 @@ class UsersController < ApplicationController
       user = User.new(params[:user])
       if user.valid?
         @user = User.create_user! params[:user]
-        #signup = UserNotifier.send_signup_email(@user)
-        #signup.deliver
+        UserNotifier.send_signup_email(@user).deliver!
         flash[:success] = "Welcome #{@user.user_id}. Your account has been created."
         redirect_to login_path
       else
@@ -41,4 +44,38 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if (@current_user.role == 'admin')
+      @user = User.find(params[:id])
+      if(@user.destroy)
+        flash[:notice] = "#{@user.user_id} deleted."
+        redirect_to users_path
+      else
+        flash[:notice] = "Could not delete user"
+        redirect_to users_path
+      end
+    else
+      flash[:warning] = "You do not have permission!"
+      redirect_to home_index_path
+    
+    end
+  end
+  def update
+    @user = User.find params[:id]
+    @hash = {}
+    params[:user].each do |key, value|
+      unless(value.nil? || value == '')
+        @hash[key] = value
+      end
+    end
+    if(@current_user == @user || @current_user.role == "admin")
+      if(@user.update(@hash))
+        redirect_to user_path(@user)
+      else
+        redirect_to home_index_path
+      end
+    else
+      redirect_to home_index_path
+    end
+  end
 end

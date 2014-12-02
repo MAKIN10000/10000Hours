@@ -1,4 +1,5 @@
 class Goal < ActiveRecord::Base
+<<<<<<< HEAD
  attr_accessible :title, :description, :owner, :time, :pledge_amount
 
   def self.create_goal! (hash)
@@ -7,7 +8,17 @@ class Goal < ActiveRecord::Base
     
     Goal.create!(goalHash) 
   end
+=======
+  attr_accessible :title, :description, :owner, :time, :pledge_amount
+  belongs_to :user
+  has_one :charity
+
+>>>>>>> master
   def time_spent
-    return((Time.new - Time.at(self.created_at))/10000.hour)
+    return(Time.new - Time.at(self.created_at))
+  end
+  def percent_time
+#returns the percentage as a number between 0 and 100 rather than decimal
+    return(time_spent/100.hours)
   end
 end

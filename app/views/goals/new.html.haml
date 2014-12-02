@@ -1,7 +1,7 @@
 %section
   %div.container.login
     %div.row
-      %div.center.col-xs-6.col-md-4.well
+      %div.center.well
         %legend Create A Goal
         = form_tag goals_path, :method => :post do
           = text_field :goal, :title, :id => "create_goal_title", :placeholder => "Goal Title", :class=>"form-control", :required=>"true"

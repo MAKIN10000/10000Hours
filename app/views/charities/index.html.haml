@@ -1,7 +1,7 @@
 %div.container-fluid.col-md-8.center
   %h1 Charities
   %div.table-responsive
-    %table.table.table-hover.table-condensed
+    %table#charity-table.table.table-hover.table-condensed
       %thead
         %tr
           %th= 'Charity Name'
@@ -15,4 +15,4 @@
             %td= charity.president_name
             %td= charity.contact_email
             %td= link_to "More info", charity_path(charity)
-  = paginate @charities
+%script $('#charity-table').dynatable();

@@ -68,9 +68,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
-    kaminari (0.16.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     libv8 (3.16.14.7)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -147,6 +144,8 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 2.12)
       sprockets-rails (~> 2.0)
+    sendgrid (1.2.0)
+      json
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -191,7 +190,6 @@ DEPENDENCIES
   execjs
   haml
   jquery-rails
-  kaminari
   omniauth-facebook
   pg
   protected_attributes
@@ -199,6 +197,7 @@ DEPENDENCIES
   rails_12factor
   rspec-rails
   sass-rails (>= 3.2.3)
+  sendgrid
   simplecov
   sprockets-rails
   sqlite3

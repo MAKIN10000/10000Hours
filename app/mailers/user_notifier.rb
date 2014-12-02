@@ -1,0 +1,9 @@
+class UserNotifier < ActionMailer::Base
+  #include SendGrid  
+  default :from => "10khourbot@gmail.com"
+  
+  def send_signup_email(user)
+    @user = user
+  	mail(:to => "#{@user.email}", :subject => "Thank you for signing up with us!", template_path: 'Usernotifier')
+  end
+end
