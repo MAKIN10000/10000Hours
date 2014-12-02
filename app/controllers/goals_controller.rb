@@ -10,6 +10,8 @@ class GoalsController < ApplicationController
         puts "This goal already exists"
         redirect_to goals_path
     else
+      charity = Charity.find(params[:x])
+      puts charity.name
       hash = params[:goal]
       hash[:owner] = @current_user.session_token
       @goal = Goal.create_goal! hash

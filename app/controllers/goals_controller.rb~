@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
  def new
     #new goal view
-    @charities = Charities.all
+    @charities = Charity.all
   end
 
   def create
@@ -10,6 +10,7 @@ class GoalsController < ApplicationController
         puts "This goal already exists"
         redirect_to goals_path
     else
+      Charity.find(params[:x])
       hash = params[:goal]
       hash[:owner] = @current_user.session_token
       @goal = Goal.create_goal! hash
