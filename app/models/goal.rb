@@ -1,6 +1,8 @@
 class Goal < ActiveRecord::Base
- attr_accessible :title, :description, :owner, :time
+  attr_accessible :title, :description, :owner, :time
   belongs_to :user
+  has_one :charity
+
   def time_spent
     return(Time.new - Time.at(self.created_at))
   end

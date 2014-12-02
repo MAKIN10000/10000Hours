@@ -1,10 +1,11 @@
 class Goal < ActiveRecord::Base
  attr_accessible :title, :description, :owner, :time
-
-  def self.create_goal! (hash)
-
-    goalHash = {:title => "#{hash[:title]}", :description => "#{hash[:description]}", :owner => "#{hash[:owner]}", :time => "#{hash[:time]}" }
-    
-    Goal.create!(goalHash) 
+  belongs_to :user
+  def time_spent
+    return(Time.new - Time.at(self.created_at))
+  end
+  def percent_time
+#returns the percentage as a number between 0 and 100 rather than decimal
+    return(time_spent/100.hours)
   end
 end
