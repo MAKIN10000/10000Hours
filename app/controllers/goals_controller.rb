@@ -19,7 +19,8 @@ class GoalsController < ApplicationController
       charity = Charity.find(params[:selected_charity])
       puts charity.name
       hash = params[:goal]
-      @goal = @current_user.goals.create!(hash) 
+      @goal = @current_user.goals.create!(hash)
+      @goal.charity << charity
       flash[:notice] = "#{@goal.title} was successfully created"
       redirect_to goals_path
     end

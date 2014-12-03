@@ -1,5 +1,4 @@
 class Goal < ActiveRecord::Base
-<<<<<<< HEAD
  attr_accessible :title, :description, :owner, :time, :pledge_amount
 
   def self.create_goal! (hash)
@@ -8,12 +7,10 @@ class Goal < ActiveRecord::Base
     
     Goal.create!(goalHash) 
   end
-=======
   attr_accessible :title, :description, :owner, :time, :pledge_amount
   belongs_to :user
   has_one :charity
 
->>>>>>> master
   def time_spent
     return(Time.new - Time.at(self.created_at))
   end
