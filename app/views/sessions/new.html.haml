@@ -4,9 +4,6 @@
     %div.row
       %div.center.well
         %legend Login
-        -flash.each do |type, msg|
-          %div{:class => "alert alert-#{type}", :data=>{:alert=>"alert"}} 
-            = msg 
         = form_tag login_create_path, :method => :post, :class => "form-signin" do
           = text_field :user, :user_id, :id => "login_userid", :class=>"form-control",:placeholder=>"Username", :required=>"true"
           %br

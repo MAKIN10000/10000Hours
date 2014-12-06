@@ -4,9 +4,6 @@
     %div.row
       %div.center.well
         %legend Registration
-        -flash.each do |type, msg|
-          %div{:class => "alert alert-#{type}", :data=>{:alert=>"alert"}} 
-            = msg 
         = form_tag users_path, :method => :post do
           = text_field :user, :user_id, :class=>"form-control",:placeholder=>"Username", :required=> "true"
           %br

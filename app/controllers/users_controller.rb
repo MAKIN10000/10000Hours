@@ -1,9 +1,10 @@
 # This file is app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def index
-    if(@current_user.role == "admin")
+    if(!@current_user.nil? && @current_user.role == "admin")
       @users = User.all.order(:user_id)
     else
+      flash[:warning] = "You must be an admin to view that!!"
       redirect_to home_index_path
     end
   end
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if (@current_user.role == 'admin')
+    if (!@current_user.nil? && @current_user.role == 'admin')
       @user = User.find(params[:id])
       if(@user.destroy)
         flash[:notice] = "#{@user.user_id} deleted."
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
         redirect_to users_path
       end
     else
-      flash[:warning] = "You do not have permission!"
+      flash[:warning] = "You must be an admin to do that!!"
       redirect_to home_index_path
     
     end
@@ -64,17 +65,23 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     @hash = {}
     params[:user].each do |key, value|
-      unless(value.nil? || value == '')
+      unless(value.nil? || value == ''|| key == 'role')
+        @hash[key] = value
+      end
+      if(key == 'role' && !@current_user.nil? && @current_user.role == 'admin')
         @hash[key] = value
       end
     end
     if(@current_user == @user || @current_user.role == "admin")
       if(@user.update(@hash))
+        flash[:notice] = "Updates Successful!"
         redirect_to user_path(@user)
       else
-        redirect_to home_index_path
+        flash[:notice] = "Oops something went wrong!"
+        redirect_to user_path(@user)
       end
     else
+      flash[:warning] = "You must be an admin to do that!!"
       redirect_to home_index_path
     end
   end
