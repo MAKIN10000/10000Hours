@@ -18,8 +18,8 @@
               %td= user.name
               %td= user.email
               -if(user.role == "user")
-                %td= button_to "Make Admin", '#', :class => "btn btn-primary", :confirm=> "Are you sure you wish to make #{user.user_id} an admin?"
+                %td= button_to "Make Admin", {:controller=> "users", :action=>"update", :id=>user.id, :user=>{:role=>"admin"}}, :method=>:put, :class => "btn btn-primary", :confirm=> "Are you sure you wish to make #{user.user_id} an admin?"
               -else
-                %td= button_to "Revoke Admin", '#', :class => "btn btn-warning", :confirm=> "Are you sure you wish to revoke #{user.user_id}'s admin privilege?"
+                %td= button_to "Revoke Admin", {:controller=> "users", :action=>"update", :id=>user.id, :user=>{:role=>"user"}}, :method=>:put, :class => "btn btn-warning", :confirm=> "Are you sure you wish to revoke #{user.user_id}'s admin privilege?"
               %td= button_to "Delete", user_path(user), :class => "btn btn-danger", :method => :delete, :confirm=> "Are you sure you wish to delete #{user.user_id}?"
 %script $('#user-table').dynatable();

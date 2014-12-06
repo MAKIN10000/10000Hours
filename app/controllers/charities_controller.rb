@@ -4,16 +4,20 @@ class CharitiesController < ApplicationController
   end
 
   def create
-    if Charity.exists?({:contact_email => params[:charity][:contact_email]})
-        flash[:notice] = "Charity already exists"
-        puts "This charity already exists"
-        redirect_to home_index_path
+    if !@current_user.nil? && @current_user.role =='admin'
+      if Charity.exists?({:contact_email => params[:charity][:contact_email]})
+          flash[:notice] = "Charity already exists"
+          puts "This charity already exists"
+          redirect_to new_charity_path
+      else
+        @charity = Charity.create_charity! params[:charity]
+        flash[:notice] = "#{@charity.name} was successfully created"
+        redirect_to charities_path
+      end
     else
-      @charity = Charity.create_charity! params[:charity]
-      flash[:notice] = "#{@charity.name} was successfully created"
-      redirect_to home_index_path
+      flash[:warning] = "You must be an admin to do that!"
+      redirect_to login_path
     end
-
   end
 
   def index 
@@ -26,10 +30,15 @@ class CharitiesController < ApplicationController
   end
 
   def destroy
-    @charity = Charity.find(params[:id])
-    @charity.destroy
-    flash[:notice] = "Movie '#{@charity.name}' deleted."
-    redirect_to home_index_path
+    if !@current_user.nil? && @current_user.role == 'admin'
+      @charity = Charity.find(params[:id])
+      @charity.destroy
+      flash[:notice] = "#{@charity.name} deleted."
+      redirect_to charities_path
+    else
+      flash[:warning] = "You must be an admin to do that!"
+      redirect_to login_path
+    end
   end
 
 end
