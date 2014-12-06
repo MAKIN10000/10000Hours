@@ -5,21 +5,14 @@ class GoalsController < ApplicationController
   end
 
   def create
-    if Goal.exists?({:title => params[:goal][:title], :pledge_amount => params[:goal][:pledge_amount], :owner => @current_user.session_token})
+    if @current_user.goal.exists?({:title => params[:goal][:title], :pledge_amount => params[:goal][:pledge_amount]})
         flash[:notice] = "Goal already exists"
         redirect_to goals_path
     else
-      #charities = Charity.all
-      #charities.each do |charity|
-      #  if $('##{charity.id}').is(:selected)
-      #    selected_charity_id = charity.id
-      #  end
-      #end
-      puts "CHARITY ID"
       charity = Charity.find(params[:selected_charity])
-      puts charity.name
       hash = params[:goal]
-      @goal = @current_user.goals.create!(hash) 
+      @goal = @current_user.goals.create!(hash)
+      @goal.charity << charity
       flash[:notice] = "#{@goal.title} was successfully created"
       redirect_to goals_path
     end
