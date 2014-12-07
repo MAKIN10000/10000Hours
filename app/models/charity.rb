@@ -2,7 +2,6 @@ class Charity < ActiveRecord::Base
   
   attr_accessible :name, :description, :president_name, :contact_email, :charity_website
 
-  has_many :goals
 
   def self.create_charity! (hash)
 

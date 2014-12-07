@@ -8,7 +8,7 @@
           %br
           = text_area :goal, :description, :id => "create_goal_description", :placeholder=> "Description", :class=>"form-control", :required=>"true"
           %br
-          = text_field :goal, :pledge_amount, :id => "create_goal_pledge_amount", :placeholder => "Pledge Amount", :class=> "form-control", :required => "true"
+          = text_field :goal, :pledge_amount, :id => "create_goal_pledge_amount", :type => "range", :placeholder => "Pledge Amount", :class=> "form-control", :required => "true", :min => "5.00", :max => "500.00"
           %br
           = select_tag 'selected_charity', options_from_collection_for_select(@charities, 'id', 'name')
           %br
