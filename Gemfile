@@ -17,6 +17,7 @@ gem 'sendgrid'
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'omniauth-facebook'
+gem 'koala', '~> 1.10.0rc'
 #gem 'strong_parameter'
 
 group :development, :test do

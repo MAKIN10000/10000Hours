@@ -13,9 +13,13 @@ class UsersController < ApplicationController
     id = params[:id]
     if(!@current_user.nil?)
       @user = User.find(id)
-      unless @current_user == @user || @current_user.role == "admin"
-        flash[:warning] = "you do not have permission!!"
-        redirect_to home_index_path
+      if(@user.provider == 'facebook')
+        @friends = []
+        graph = Koala::Facebook::API.new(@user.token)
+        f = graph.get_connections("me","friends")
+        f.each do |f|
+          @friends << User.find_by_uid(f['id'])
+        end
       end
     else
       flash[:warning] = "You must login to do that!"
