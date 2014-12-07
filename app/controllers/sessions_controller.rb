@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     user = User.find_by_user_id(params[:user][:user_id])
     if( not user.nil?) && ( user.authenticate params[:user][:password] )
       session[:session_token] = user.session_token
-      flash[:success] = "Logged in"
       redirect_to home_index_path
     else
       flash[:warning] = "Login failed"
@@ -15,14 +14,15 @@ class SessionsController < ApplicationController
     end
   end   
   def createfb
-    user = User.omniauth(env['omniauth.auth'])
+    auth = request.env['omniauth.auth']
+    user = User.omniauth(auth)
+    user.update_attributes(:token => auth["credentials"]["token"])
     session[:session_token] = user.session_token
-    redirect_to home_index_path
+    redirect_to user_path(user)
   end
-
   def destroy
     session[:session_token] = nil 
-    flash[:success] = "Logout Successful"
+    flash[:notice] = "Logout Successful"
     redirect_to home_index_path
   end
 

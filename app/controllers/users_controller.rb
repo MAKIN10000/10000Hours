@@ -17,6 +17,11 @@ class UsersController < ApplicationController
         flash[:warning] = "you do not have permission!!"
         redirect_to home_index_path
       end
+      if(@user.provider == 'facebook')
+        graph = Koala::Facebook::API.new(@user.token)
+        graph.put_wall_post("testing permissions")
+        puts("here are your friends!>>>>>>>>>>>>>>>>>>>>>>>>>>")
+      end
     else
       flash[:warning] = "You must login to do that!"
       redirect_to login_path
