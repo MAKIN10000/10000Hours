@@ -24,9 +24,16 @@
         %li 
           =link_to '<span class= "glyphicon glyphicon-cog"></span> Settings'.html_safe,"#settings", data:{toggle:"tab"}
     %div.tab-content
-      %div.tab-pane.active{:id=>"goal"}
+      %div.tab-pane{:id=>"goal"}
         %ul.panel-group{:id=>"goals",:data=>{:user=>@user.uid},:aria=>{:multiselectable=>"true"},:role=>"tablist"}
-      %div.tab-pane{:id=>"friends"}
+      %div.tab-pane.active{:id=>"friends"}
+        %br
+        %div.row
+          - @friends.each do |friend|
+            %div.panel.panel-default.col-md-4
+              =link_to "<img src='#{friend.image}' style='max-height: 60px;' class='img img-thumbnail'>".html_safe, user_path(friend), class: "pull-left"
+              %div.caption
+                %h4.pull-right #{friend.name}
       %div.tab-pane{:id=>"settings"}
         %div.col-md-8.col-md-offset-2
           = form_tag user_path(@user), :method => :put, class: "form-horizontal" do
