@@ -1,0 +1,4 @@
+class AddCharityToGoal < ActiveRecord::Migration
+  def change
+  end
+end

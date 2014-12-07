@@ -1,0 +1,5 @@
+class DropCharityId < ActiveRecord::Migration
+  def change
+    drop_column :goals, :charity_id
+  end
+end
