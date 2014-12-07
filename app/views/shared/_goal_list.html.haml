@@ -1,6 +1,4 @@
-%br
-%div.col-md-8
-  %p Testing text
+%div.col-md-8s
   - if @goal != nil
     - @goal.each do |g|
       - if (g.percent_time >= 100)
@@ -13,7 +11,8 @@
               %p #{g.description}
               %div.progress
                 %div.progress-bar.progress-bar-danger{:aria=>{:valuenow=>"100", :valuemin=>"0", :valuemax=>"100"}, :style=>"width:100%"}
-              = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?'
+              = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?', class: "pull-left btn btn-danger"
+              = link_to "More info", goal_path(g), class: "pull-right"
       - elsif (g.percent_time >= 75)
         %div.panel.panel-warning
           %div.panel-heading{ :role=>"tab"}
@@ -24,7 +23,8 @@
               %p #{g.description}
               %div.progress
                 %div.progress-bar.progress-bar-warning.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.percent_time}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.percent_time}%"}
-              = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?'
+              = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?', class: "pull-left btn btn-danger"
+              = link_to "More info", goal_path(g), class: "pull-right"
       -else
         %div.panel.panel-primary
           %div.panel-heading{ :role=>"tab"}
@@ -35,4 +35,5 @@
               %p #{g.description}
               %div.progress
                 %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.percent_time}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.percent_time}%"}
-              = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?'
+              = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?', class: "pull-left btn btn-danger"
+              = link_to "More info", goal_path(g), class: "pull-right"

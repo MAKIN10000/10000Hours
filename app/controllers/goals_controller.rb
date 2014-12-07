@@ -24,7 +24,7 @@ class GoalsController < ApplicationController
     id = params[:id]
     user = User.find_by_uid(id)
     @goal = user.goals.order(:created_at)
-    render :partial => "index", :object=>@goal if request.xhr?
+    render :partial => "/shared/goal_list", :object=>@goal if request.xhr?
   end
 
   def show
