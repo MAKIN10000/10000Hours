@@ -13,7 +13,7 @@
         %tbody
           -@users.each do |user|
             %tr
-              %td= link_to "#{user.user_id}", user_path(user)
+              %td= link_to "#{user.user_id||user.name}", user_path(user)
               %td= user.id
               %td= user.name
               %td= user.email
