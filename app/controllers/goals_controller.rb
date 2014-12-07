@@ -15,6 +15,8 @@ class GoalsController < ApplicationController
       @goal.charity_id = params[:selected_charity]
       @goal.save!
       flash[:notice] = "#{@goal.title} was successfully created"
+      graph = Koala::Facebook::API.new(@current_user.token)
+      graph.put_connections("me","links",{:message => "I have set a goal to #{@goal.description}", :link =>"tenthousandhours.herokuapp.com/goals/#{@goal.id}"})
       redirect_to goals_path
     end
 
@@ -28,7 +30,7 @@ class GoalsController < ApplicationController
     id = params[:id]
     user = User.find_by_uid(id)
     @goal = user.goals.order(:created_at)
-    render :partial => "index", :object=>@goal if request.xhr?
+    render :partial => "/shared/goal_list", :object=>@goal if request.xhr?
   end
 
   def show

@@ -7,6 +7,7 @@
           %th= 'Charity Name'
           %th= 'President'
           %th= 'Email'
+          %th= 'Total Pledged Amount'
           %th= 'More'
       %tbody
         - @charities.each do |charity|
@@ -14,5 +15,6 @@
             %td= charity.name
             %td= charity.president_name
             %td= charity.contact_email
+            %td= "$ #{charity.totalPledge}"
             %td= link_to "More info", charity_path(charity)
 %script $('#charity-table').dynatable();
