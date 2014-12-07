@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       end
       if(@user.provider == 'facebook')
         graph = Koala::Facebook::API.new(@user.token)
-        graph.put_wall_post("testing permissions")
+        puts(graph.get_connections("me","friends"))
         puts("here are your friends!>>>>>>>>>>>>>>>>>>>>>>>>>>")
       end
     else
