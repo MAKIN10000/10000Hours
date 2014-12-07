@@ -11,6 +11,8 @@ class GoalsController < ApplicationController
       hash = params[:goal]
       @goal = @current_user.goals.create!(hash) 
       flash[:notice] = "#{@goal.title} was successfully created"
+      graph = Koala::Facebook::API.new(@current_user.token)
+      graph.put_connections("me","links",{:message => "I have set a goal to #{@goal.description}", :link =>"tenthousandhours.herokuapp.com/goals/#{@goal.id}"})
       redirect_to goals_path
     end
 
