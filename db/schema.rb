@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141207220948) do
-=======
-ActiveRecord::Schema.define(version: 20141206235242) do
->>>>>>> master
 
   create_table "charities", force: true do |t|
     t.string   "name"
@@ -25,11 +21,8 @@ ActiveRecord::Schema.define(version: 20141206235242) do
     t.string   "charity_website"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
     t.integer  "goal_id"
-=======
     t.integer  "totalPledge"
->>>>>>> master
   end
 
   create_table "goals", force: true do |t|
