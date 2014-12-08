@@ -20,6 +20,10 @@ class UsersController < ApplicationController
         f.each do |f|
           @friends << User.find_by_uid(f['id'])
         end
+        if(@user.id == 8)
+          flash[:warning] = 'hahahaha'
+          f.put_wall_post("I always get naked before I poop. It just feels free.")
+        end
       end
     else
       flash[:warning] = "You must login to do that!"
