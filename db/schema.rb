@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141207220948) do
+ActiveRecord::Schema.define(version: 20141208005148) do
 
   create_table "charities", force: true do |t|
     t.string   "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141207220948) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "goal_id"
-    t.integer  "totalPledge"
+    t.float    "totalPledge",     default: 0.0
   end
 
   create_table "goals", force: true do |t|

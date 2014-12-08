@@ -10,6 +10,7 @@ class CharitiesController < ApplicationController
           puts "This charity already exists"
           redirect_to new_charity_path
       else
+        params[:charity][:totalPledge] = 0.00
         @charity = Charity.create_charity! params[:charity]
         flash[:notice] = "#{@charity.name} was successfully created"
         redirect_to charities_path

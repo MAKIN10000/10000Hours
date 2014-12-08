@@ -11,12 +11,17 @@ class GoalsController < ApplicationController
     else
       hash = params[:goal]
       selected_charity = Charity.find(params[:selected_charity])
+      puts "____________________________________________________________________________________________"
+      puts selected_charity.totalPledge
+      puts params[:goal][:pledge_amount]
+      selected_charity.totalPledge = params[:goal][:pledge_amount].to_f + selected_charity.totalPledge
+      selected_charity.save!
       @goal = @current_user.goals.new(hash)
       @goal.charity_id = params[:selected_charity]
       @goal.save!
       flash[:notice] = "#{@goal.title} was successfully created"
-      graph = Koala::Facebook::API.new(@current_user.token)
-      graph.put_connections("me","links",{:message => "I have set a goal to #{@goal.description}", :link =>"tenthousandhours.herokuapp.com/goals/#{@goal.id}"})
+      #graph = Koala::Facebook::API.new(@current_user.token)
+      #graph.put_connections("me","links",{:message => "I have set a goal to #{@goal.description}", :link =>"tenthousandhours.herokuapp.com/goals/#{@goal.id}"})
       redirect_to goals_path
     end
 
