@@ -16,6 +16,7 @@ describe UsersController do
     context 'user doesnt exist, and is valid'
     it 'should call the create method of User' do
       user = double(User)
+      allow(user).to receive(:email)
       expect(User).to receive(:create!).and_return(user)
       allow(user).to receive(:user_id)
       post :create, :user=>{:user_id=> "nick3",:password=> "filmscrew", :password_confirmation=>"filmscrew", :email=>"user@email.com"}

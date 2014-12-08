@@ -12,9 +12,9 @@ describe SessionsController do
       expect(session[:session_token]).to_not equal(nil)
     end
   end
-  it 'should select the home page to render' do
+  it 'should select the user page to render' do
       post :create, :user=>{:user_id=> "nick", :password=>"filmcrew"}
-      expect(response).to redirect_to('/home')
+      expect(response).to redirect_to('/users/')
   end
   describe 'Logging In without facebook and bad cred' do
     it 'call the model method that performs a search' do

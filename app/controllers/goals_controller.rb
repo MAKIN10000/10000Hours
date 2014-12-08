@@ -40,13 +40,15 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-      @goal = @current_user.goals.find(params[:id])
+    if(!@current_user.nil? && @current_user.role == 'admin')
+      @goal = Goal.find(params[:id])
       if(@goal.destroy)
         flash[:notice] = "#{@goal.title} deleted."
         redirect_to goals_path
       else
         flash[:notice] = "Could not find goal"
         redirect_to goals_path
+      end
     end
   end
 end
