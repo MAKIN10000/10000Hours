@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe CharitiesController do
-  it 'should select the home page to render' do
+  it 'should select the charities page to render' do
       post :create, :charity => {:name => "charity_for_a_test", :description => "test", :president_name => "tester", :contact_email => "testies@test.com", :charity_website => "https://www.test.com" }
-      expect(response).to redirect_to('/home')
+      expect(response).to redirect_to('/charities')
   end
 
   describe 'Creating a charity that already exists' do
