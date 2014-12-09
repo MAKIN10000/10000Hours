@@ -1,5 +1,5 @@
 class Goal < ActiveRecord::Base
- attr_accessible :title, :description, :owner, :time, :pledge_amount, :charity
+ attr_accessible :title, :description, :owner, :time, :pledge_amount, :charity, :completed
  belongs_to :user
  has_one :charity 
   def self.create_goal! (hash)
