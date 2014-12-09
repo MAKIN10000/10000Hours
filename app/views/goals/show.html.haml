@@ -9,7 +9,11 @@
         %dd #{@goal.created_at}
         %dt Owner:
         %dd #{@goal.user.name}
+        %dt Charity Pledged to: 
+        %dd #{@charity.name}
+        %dt Amount Pledged:
+        %dd #{number_to_currency(@goal.pledge_amount)}
         %dd 
           %img.img-thumbnail.img-responsive{:src=>"#{@goal.user.image}", :style=>"max-width:150px;"}
-      - if @current_user.role == 'admin' 
+      - if @current_user != nil && @current_user.role == 'admin' 
         = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'

@@ -15,6 +15,6 @@
             %td= charity.name
             %td= charity.president_name
             %td= charity.contact_email
-            %td= charity.totalPledge
+            %td= "$ #{charity.totalPledge}"
             %td= link_to "More info", charity_path(charity)
 %script $('#charity-table').dynatable();

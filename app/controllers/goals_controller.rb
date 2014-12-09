@@ -12,7 +12,6 @@ class GoalsController < ApplicationController
       hash = params[:goal]
       hash[:completed] = false
       selected_charity = Charity.find(params[:selected_charity])
-      puts "____________________________________________________________________________________________"
       puts selected_charity.totalPledge
       puts params[:goal][:pledge_amount]
       selected_charity.totalPledge = params[:goal][:pledge_amount].to_f + selected_charity.totalPledge
@@ -42,6 +41,9 @@ class GoalsController < ApplicationController
   def show
     id = params[:id] 
     @goal = Goal.find(id)
+    @charity = Charity.find(@goal.charity_id)
+    #TODO: add functionality here to handle when a charity does not exist
+
   end
 
   def update

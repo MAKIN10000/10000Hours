@@ -1,13 +1,19 @@
-%h1 #{@goal.title} 
-
-%ul#details
-  %li
-    Owner: #{@goal.owner}
-  %li
-%h3 Description:
-
-%p#description= @goal.description
-
-
-
-= button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'
+%div.container-fluid.center.login 
+  %div.row
+    %div.center.well
+      %h1 #{@goal.title} 
+      %dl
+        %dt Description: 
+        %dd #{@goal.description}
+        %dt Date Created: 
+        %dd #{@goal.created_at}
+        %dt Owner:
+        %dd #{@goal.user.name}
+        %dt Charity Pledged to: 
+        %dd #{@charity.name}
+        %dt Amount Pledged:
+        %dd $#{@goal.pledge_amount.round(2)}
+        %dd 
+          %img.img-thumbnail.img-responsive{:src=>"#{@goal.user.image}", :style=>"max-width:150px;"}
+      - if @current_user != nil && @current_user.role == 'admin' 
+        = button_to 'Delete', goal_path(@goal), :method => :delete, :confirm => 'Are you sure?'
