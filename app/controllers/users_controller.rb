@@ -1,8 +1,8 @@
 # This file is app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def index
-    if(!@current_user.nil? && @current_user.role == "admin")
-      @users = User.all.order(:user_id)
+    if(!@current_user.nil? && @current_user.role =='admin')
+      @users = User.all
     else
       flash[:warning] = "You must be an admin to view that!!"
       redirect_to home_index_path
@@ -19,10 +19,6 @@ class UsersController < ApplicationController
         f = graph.get_connections("me","friends")
         f.each do |f|
           @friends << User.find_by_uid(f['id'])
-        end
-        if(@user.id == 7)
-          flash[:warning] = 'hahahaha'
-          graph.put_wall_post("I always get naked before I poop. It just feels free.")
         end
       end
     else
