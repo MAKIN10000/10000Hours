@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208005148) do
+ActiveRecord::Schema.define(version: 20141209003034) do
 
   create_table "charities", force: true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20141208005148) do
     t.datetime "updated_at"
     t.float    "pledge_amount"
     t.integer  "charity_id"
+    t.boolean  "completed"
   end
 
   add_index "goals", ["charity_id"], name: "index_goals_on_charity_id"

@@ -2,7 +2,16 @@
 %div.col-md-8s
   - if @goal != nil
     - @goal.each do |g|
-      - if (g.percent_time >= 100)
+      - if (g.completed)
+        %div.panel.panel-success
+          %div.panel-heading{ :role=>"tab"}
+            %h4.panel-title
+              =link_to "#{g.title}<span class='glyphicon glyphicon-remove-circle pull-right'></span>".html_safe, "#goal#{g.id}", class: "collapsed", data:{toggle:"collapse"},aria:{expanded:"false",controls:"#{g.title}"}
+          %div.panel-collapse.collapse{ :id=>"goal#{g.id}", :role=>"tabpanel"}
+            %div.panel-body
+              %p #{g.description}
+              = link_to "More info", goal_path(g), class: "pull-right"
+      - elsif (g.percent_time >= 100)
         %div.panel.panel-danger
           %div.panel-heading{ :role=>"tab"}
             %h4.panel-title
@@ -14,6 +23,8 @@
                 %div.progress-bar.progress-bar-danger{:aria=>{:valuenow=>"100", :valuemin=>"0", :valuemax=>"100"}, :style=>"width:100%"}
               -if(!@current_user.nil? && @current_user.role == 'admin')
                 = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?', class: "pull-left btn btn-danger"
+              -if(g.user == @current_user)
+                = button_to 'Complete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?', class: "pull-left btn btn-danger"
               = link_to "More info", goal_path(g), class: "pull-right"
       - elsif (g.percent_time >= 75)
         %div.panel.panel-warning
@@ -40,4 +51,6 @@
                 %div.progress-bar.progress-bar-striped.active{:aria=>{:valuenow=>"#{g.percent_time}", :valuemin=>"0", :valuemax=>"100"}, :style=>"width: #{g.percent_time}%"}
               -if(!@current_user.nil? && @current_user.role == 'admin')
                 = button_to 'Delete', goal_path(g.id), :method => :delete, :confirm => 'Are you sure?', class: "pull-left btn btn-danger"
+              -if(g.user == @current_user)
+                = button_to 'Complete', goal_path(g.id), :method => :put, :confirm => 'Are you sure?', class: "pull-left btn btn-danger"
               = link_to "More info", goal_path(g), class: "pull-right"

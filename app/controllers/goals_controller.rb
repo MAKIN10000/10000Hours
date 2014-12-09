@@ -10,6 +10,7 @@ class GoalsController < ApplicationController
       redirect_to goals_path
     else
       hash = params[:goal]
+      hash[:completed] = false
       selected_charity = Charity.find(params[:selected_charity])
       puts "____________________________________________________________________________________________"
       puts selected_charity.totalPledge
@@ -41,8 +42,17 @@ class GoalsController < ApplicationController
   def show
     id = params[:id] 
     @goal = Goal.find(id)
-
   end
+
+  def update
+    id = params[:id]
+    goal = Goal.find(id)
+    puts goal.title
+    goal.completed = true
+    goal.save
+    redirect_to root_path
+  end
+
 
   def destroy
     if(!@current_user.nil? && @current_user.role == 'admin')
