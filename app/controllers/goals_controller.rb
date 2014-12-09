@@ -49,7 +49,6 @@ class GoalsController < ApplicationController
   def update
     id = params[:id]
     goal = Goal.find(id)
-    puts goal.title
     goal.completed = true
     goal.save
     redirect_to root_path
