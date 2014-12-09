@@ -23,8 +23,10 @@ class Goal < ActiveRecord::Base
   def self.cron_job
     @goal = Goal.all
     @goal.each do |g|
-    UserNotifier.send_goal_email(g.user).deliver!
-      if g.percent_time == 1
+      if g.percent_time == 50
+        UserNotifier.send_goal_email(g.user).deliver!
+      end
+      if g.percent_time == 90
         UserNotifier.send_goal_email(g.user).deliver!
       end
     end
