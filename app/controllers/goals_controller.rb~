@@ -15,6 +15,7 @@ class GoalsController < ApplicationController
       puts selected_charity.totalPledge
       puts params[:goal][:pledge_amount]
       selected_charity.totalPledge = params[:goal][:pledge_amount].to_f + selected_charity.totalPledge
+      selected_charity.save!
       @goal = @current_user.goals.new(hash)
       @goal.charity_id = params[:selected_charity]
       @goal.save!
@@ -40,17 +41,21 @@ class GoalsController < ApplicationController
   def show
     id = params[:id] 
     @goal = Goal.find(id)
-
+    params[:goall] = @goal
+    @charity = Charity.find(@goal.charity_id)
+    #TODO: add functionality here to handle when a charity does not exist
   end
 
   def destroy
-      @goal = @current_user.goals.find(params[:id])
+    if(!@current_user.nil? && @current_user.role == 'admin')
+      @goal = Goal.find(params[:id])
       if(@goal.destroy)
         flash[:notice] = "#{@goal.title} deleted."
         redirect_to goals_path
       else
         flash[:notice] = "Could not find goal"
         redirect_to goals_path
+      end
     end
   end
 end
