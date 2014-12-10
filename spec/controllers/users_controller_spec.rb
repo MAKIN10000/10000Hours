@@ -2,16 +2,18 @@ require 'rails_helper'
 
 describe UsersController do
   describe 'Register' do
-    context 'user exists'
-    it 'should render register page' do
-      expect(User).to receive(:exists?).and_return(true)
-      post :create, :user=>{:user_id=> "nick",:password=> "filmcrew", :password_confirmation=>"filmcrew", :email=>"user@email.com"}
-      expect(response).to redirect_to('/users/new')
+    context 'user exists' do
+      it 'should render register page' do
+        expect(User).to receive(:exists?).and_return(true)
+        post :create, :user=>{:user_id=> "nick",:password=> "filmcrew", :password_confirmation=>"filmcrew", :email=>"user@email.com"}
+        expect(response).to redirect_to('/users/new')
+      end
     end
-    context 'user doesnt exist, but is not valid'
-    it 'should redirect to registration page' do
-      post :create, :user=>{:user_id=> "nick2",:password=> "firew", :password_confirmation=>"filcrew", :email=>"user@email.com"}
-      expect(response).to redirect_to('/users/new')
+    context 'user doesnt exist, but is not valid' do
+      it 'should redirect to registration page' do
+        post :create, :user=>{:user_id=> "nick2",:password=> "firew", :password_confirmation=>"filcrew", :email=>"user@email.com"}
+        expect(response).to redirect_to('/users/new')
+      end
     end
     it 'should call create! and select the login_path to render' do
       user = double(User)
@@ -35,6 +37,15 @@ describe UsersController do
       session[:session_token] = nil
       get :show, :id=>1
       expect(response).to redirect_to('/login')
+    end
+    context 'provider is facebook' do
+      it 'gather friends' do
+        user1234 = double(User.omniauth(mock_auth_hash)) 
+        expect(user1234.provider).to eq("facebook")
+        expect(Koala::Facebook::API).to receive(:new)
+        expect(double(Koala::Facebook::API)).to receive(:get_connections)
+        get :show, :id=>User.find_by_session_token(user1234.session_token)
+      end
     end
   end
   describe 'deleting users' do
@@ -86,10 +97,8 @@ describe UsersController do
     end
     it 'should load user list if logged in as admin' do
       session[:session_token]='administrator_token'
-      expect(User).to receive(:all)
       get :index
-      expect(response).to redirect_to('/users')
+      expect(response.status).to eq(200) 
     end
   end
 end
-
