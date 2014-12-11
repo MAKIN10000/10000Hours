@@ -1,7 +1,11 @@
 {
   "RSpec": {
     "coverage": {
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/controllers/application_controller.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/controllers/application_controller.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         1,
         1,
@@ -14,6 +18,7 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/helpers/application_helper.rb": [
         1,
         null
@@ -39,6 +44,33 @@
         null
       ],
       "/home/saasbook/10000hours/app/controllers/charities_controller.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/10000Hours/app/helpers/charity_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/10000Hours/app/helpers/goals_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/10000Hours/app/helpers/home_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/10000Hours/app/helpers/sessions_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/10000Hours/app/helpers/sessions_controller_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/10000Hours/app/controllers/charities_controller.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         1,
         null,
@@ -85,7 +117,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/controllers/goals_controller.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/controllers/goals_controller.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         1,
         null,
@@ -163,7 +199,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/controllers/home_controller.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/controllers/home_controller.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         1,
         0,
@@ -178,7 +218,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/controllers/sessions_controller.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/controllers/sessions_controller.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         null,
         1,
         1,
@@ -209,7 +253,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/controllers/users_controller.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/controllers/users_controller.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         null,
         1,
         1,
@@ -308,7 +356,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/mailers/user_notifier.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/mailers/user_notifier.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         null,
         1,
@@ -324,7 +376,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/models/charity.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/models/charity.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         null,
         1,
@@ -339,7 +395,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/models/goal.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/models/goal.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         1,
         1,
@@ -376,7 +436,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/models/user.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/models/user.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         1,
         null,
@@ -418,7 +482,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/10000hours/app/models/user_mailer.rb": [
+=======
+      "/home/saasbook/Documents/10000Hours/app/models/user_mailer.rb": [
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
         1,
         1,
         0,
@@ -427,6 +495,10 @@
         null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1418327356
+=======
+    "timestamp": 1418322351
+>>>>>>> ab77e6097dc6fada3c5f06b43e71d7c388d12daf
   }
 }
