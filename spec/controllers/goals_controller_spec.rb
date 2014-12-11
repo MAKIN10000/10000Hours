@@ -2,12 +2,20 @@ require 'rails_helper'
 
 describe GoalsController do
   describe 'Completion' do
+    before :each do
+      @user = User.new(:user_id =>1, :email=> 'nick@gmail', :password => 'filmcrew' )
+      @goal = Goal.create(:title => "HEEEY", :description => 'HI', :pledge_amount => 3.5)
+    end
     context 'Goal is completed'
-    it 'should render index page' do
-      expect(Goal).to receive(:find)
-      #put :update, :id=>{:user_id => 1, :title=> "HEEEY",:description => "HI", :pledge_amount => 3.5, :charity_id => 3}
-      expect(response).to redirect_to('/home')
+    it 'should redirect to index page' do
+      #expect(Goal).to receive(:find)
+      put :update, :id=>1
+      expect(response).to redirect_to('/')
     end
   end
 end
+
+
+
+
 
