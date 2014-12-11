@@ -26,10 +26,8 @@ describe UsersController do
     end
   end
   describe 'profile page' do
-    before(:each) do
-      session[:session_token]='test_token'
-    end
     it 'should render the show page' do
+      session[:session_token]='test_token'
       get :show, :id=>1
       expect(response.status).to eq(200)
     end
@@ -40,11 +38,11 @@ describe UsersController do
     end
     context 'provider is facebook' do
       it 'gather friends' do
-        user1234 = double(User.omniauth(mock_auth_hash)) 
-        expect(user1234.provider).to eq("facebook")
-        expect(Koala::Facebook::API).to receive(:new)
-        expect(double(Koala::Facebook::API)).to receive(:get_connections)
-        get :show, :id=>User.find_by_session_token(user1234.session_token)
+        session[:session_token]="facebook"
+        koala = double(Koala::Facebook::API, :get_connections=>double(:each=>nil))
+        expect(Koala::Facebook::API).to receive(:new).and_return(koala)
+        expect(koala).to receive(:get_connections)
+        get :show, :id=>'3'
       end
     end
   end
@@ -81,6 +79,57 @@ describe UsersController do
       expect(user).to receive(:destroy).and_return(false)
       delete :destroy, :id => 4
       expect(response).to redirect_to('/users')
+    end
+  end
+  describe 'User settings' do
+    context 'user is logged in as self' do
+      it 'should allow user to modify herself' do
+        user = double(User, :session_token => 'test_token', :id => 1)
+        session[:session_token] = user.session_token
+        put :update, :id=> "1", :user=>{:email => 'testtest@email.com'}
+        expect(User.find(1).email).to eq('testtest@email.com')
+      end
+      it 'should not allow user to modify other user' do
+        user = double(User, :session_token => 'test_token', :id => 1)
+        session[:session_token] = user.session_token
+        put :update, :id=> "2", :user=>{:email => 'testtest@email.com'}
+        expect(User.find(2).email).to_not eq('testtest@email.com')
+      end
+      it 'should redirect to profile if self' do
+        session[:session_token] = 'test_token' 
+        put :update, :id=> "1", :user=>{:email => 'testtest@email.com'}
+        expect(response).to redirect_to('/users/1')
+      end
+      it 'should redirect to profile' do
+        session[:session_token] = 'test_token' 
+        put :update, :id=> "1", :user=>{:email => 'testtest@email.com'}
+        expect(response).to redirect_to('/users/1')
+      end
+    end
+    context 'user is logged in as admin' do
+      it 'should allow user to modify any user' do
+        user = double(User, :session_token => 'administrator_token', :id => 2)
+        session[:session_token] = user.session_token
+        put :update, :id=> "3", :user=>{:email => 'testtest@email.com'}
+        expect(User.find(3).email).to eq('testtest@email.com')
+      end
+      it 'should redirect to profile' do
+        session[:session_token] = 'administrator_token' 
+        put :update, :id=> "1", :user=>{:email => 'testtest@email.com'}
+        expect(response).to redirect_to('/users/1')
+      end
+    end
+    context 'user is not logged in' do
+      it 'should not allow modification of any user' do
+        session[:session_token] = nil 
+        put :update, :id=> "1", :user=>{:email => 'testtest@email.com'}
+        expect(User.find(3).email).to_not eq('testtest@email.com')
+      end
+      it 'should redirect to home' do
+        session[:session_token] = nil 
+        put :update, :id=> "1", :user=>{:email => 'testtest@email.com'}
+        expect(response).to redirect_to('/login')
+      end
     end
   end
   describe 'admin dashboard' do
