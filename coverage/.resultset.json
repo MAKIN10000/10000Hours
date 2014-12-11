@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/controllers/application_controller.rb": [
+      "/home/saasbook/Documents/10000Hours/app/controllers/application_controller.rb": [
         1,
         1,
         1,
@@ -14,31 +14,31 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/helpers/application_helper.rb": [
+      "/home/saasbook/Documents/10000Hours/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/helpers/charity_helper.rb": [
+      "/home/saasbook/Documents/10000Hours/app/helpers/charity_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/helpers/goals_helper.rb": [
+      "/home/saasbook/Documents/10000Hours/app/helpers/goals_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/helpers/home_helper.rb": [
+      "/home/saasbook/Documents/10000Hours/app/helpers/home_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/helpers/sessions_helper.rb": [
+      "/home/saasbook/Documents/10000Hours/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/helpers/sessions_controller_helper.rb": [
+      "/home/saasbook/Documents/10000Hours/app/helpers/sessions_controller_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/controllers/charities_controller.rb": [
+      "/home/saasbook/Documents/10000Hours/app/controllers/charities_controller.rb": [
         1,
         1,
         null,
@@ -85,7 +85,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/controllers/goals_controller.rb": [
+      "/home/saasbook/Documents/10000Hours/app/controllers/goals_controller.rb": [
         1,
         1,
         null,
@@ -160,7 +160,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/controllers/home_controller.rb": [
+      "/home/saasbook/Documents/10000Hours/app/controllers/home_controller.rb": [
         1,
         1,
         0,
@@ -175,7 +175,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/controllers/sessions_controller.rb": [
+      "/home/saasbook/Documents/10000Hours/app/controllers/sessions_controller.rb": [
         null,
         1,
         1,
@@ -206,7 +206,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/controllers/users_controller.rb": [
+      "/home/saasbook/Documents/10000Hours/app/controllers/users_controller.rb": [
         null,
         1,
         1,
@@ -300,7 +300,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/mailers/user_notifier.rb": [
+      "/home/saasbook/Documents/10000Hours/app/mailers/user_notifier.rb": [
         1,
         null,
         1,
@@ -316,7 +316,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/models/charity.rb": [
+      "/home/saasbook/Documents/10000Hours/app/models/charity.rb": [
         1,
         null,
         1,
@@ -331,7 +331,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/models/goal.rb": [
+      "/home/saasbook/Documents/10000Hours/app/models/goal.rb": [
         1,
         1,
         1,
@@ -368,7 +368,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/models/user.rb": [
+      "/home/saasbook/Documents/10000Hours/app/models/user.rb": [
         1,
         1,
         null,
@@ -410,7 +410,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/10000Hours/10000Hours/app/models/user_mailer.rb": [
+      "/home/saasbook/Documents/10000Hours/app/models/user_mailer.rb": [
         1,
         1,
         0,
@@ -419,6 +419,6 @@
         null
       ]
     },
-    "timestamp": 1418314023
+    "timestamp": 1418322351
   }
 }

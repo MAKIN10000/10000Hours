@@ -41,27 +41,6 @@ describe GoalsController do
     end
 
   end
-
-  describe 'Creating a goals that does not already exist' do
-    before(:all) do
-      goals_with_that_name = Goal.where(:name => "xxsaeignn__bbnannea842mmr3920wllx69").count
-      if (goals_with_that_name > 0)
-        Goal.where(:name => "xxsaeignn__bbnannea842mmr3920wllx69").destroy
-      end
-    end
-
-    it 'should add the goals to the database' do
-      #charityID = 1;
-      charityID = Charity.where(:title => "testc").id;
-      goalHash = {:title => "test" , :pledge_amount =>"5", :selected_charity => charityID }
-      post :create, :goal => goalHash
-
-      expect(Charity.where(:name => "xxsaeignn__bbnannea842mmr3920wllx69").count).to equal(1)
-
-    end
-
-  end
-
 end
 
 
