@@ -22,9 +22,12 @@ class GoalsController < ApplicationController
       if @current_user.provider == 'facebook'
         graph = Koala::Facebook::API.new(@current_user.token)
         perms = graph.get_connections('me', 'permissions')
-        puts(perms)
+        begin
+          graph.put_connections("me","links",{:message => "I have set a goal to #{@goal.description}", :link =>"tenthousandhours.herokuapp.com/goals/#{@goal.id}"})
+        rescue Koala::Facebook::APIError => e
+          flash[:warning] = "To have a facebook status update, relogin and select ok when prompted for permission"
+        end
       end
-      #graph.put_connections("me","links",{:message => "I have set a goal to #{@goal.description}", :link =>"tenthousandhours.herokuapp.com/goals/#{@goal.id}"})
       flash[:notice] = "#{@goal.title} was successfully created"
       redirect_to goals_path
     end
