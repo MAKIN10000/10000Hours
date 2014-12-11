@@ -66,27 +66,32 @@ class UsersController < ApplicationController
     end
   end
   def update
-    @user = User.find params[:id]
-    @hash = {}
-    params[:user].each do |key, value|
-      unless(value.nil? || value == ''|| key == 'role')
-        @hash[key] = value
+    if !@current_user.nil?
+      @user = User.find params[:id]
+      @hash = {}
+      params[:user].each do |key, value|
+        unless(value.nil? || value == ''|| key == 'role')
+          @hash[key] = value
+        end
+        if(key == 'role' && !@current_user.nil? && @current_user.role == 'admin')
+          @hash[key] = value
+        end
       end
-      if(key == 'role' && !@current_user.nil? && @current_user.role == 'admin')
-        @hash[key] = value
-      end
-    end
-    if(@current_user == @user || @current_user.role == "admin")
-      if(@user.update(@hash))
-        flash[:notice] = "Updates Successful!"
-        redirect_to user_path(@user)
+      if(@current_user == @user || @current_user.role == "admin")
+        if(@user.update(@hash))
+          flash[:notice] = "Updates Successful!"
+          redirect_to user_path(@user)
+        else
+          flash[:notice] = "Oops something went wrong!"
+          redirect_to user_path(@user)
+        end
       else
-        flash[:notice] = "Oops something went wrong!"
-        redirect_to user_path(@user)
+        flash[:warning] = "You must be an admin to do that!!"
+        redirect_to home_index_path
       end
     else
-      flash[:warning] = "You must be an admin to do that!!"
-      redirect_to home_index_path
+      flash[:warning] = "You must be logged in to do that!"
+      redirect_to login_path
     end
   end
 end
