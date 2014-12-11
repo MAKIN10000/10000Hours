@@ -41,9 +41,8 @@ class GoalsController < ApplicationController
   def show
     id = params[:id] 
     @goal = Goal.find(id)
-    @charity = Charity.find(@goal.charity_id)
-    #TODO: add functionality here to handle when a charity does not exist
-
+    if @charity = Charity.where(:id => '#{@goal.charity_id}')
+    end
   end
 
   def update

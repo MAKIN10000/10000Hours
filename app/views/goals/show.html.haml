@@ -10,7 +10,10 @@
         %dt Owner:
         %dd #{@goal.user.name}
         %dt Charity Pledged to: 
-        %dd #{@charity.name}
+        - if @charity.exists?
+          %dd #{@charity.name}
+        - else
+          %dd N/A
         %dt Amount Pledged:
         %dd #{number_to_currency(@goal.pledge_amount)}
         %dd 

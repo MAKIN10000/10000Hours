@@ -10,9 +10,12 @@
         %dt Owner:
         %dd #{@goal.user.name}
         %dt Charity Pledged to: 
-        %dd #{@charity.name}
+        - if @charity
+          %dd #{@charity.name}
+        - else
+          %dd N/A
         %dt Amount Pledged:
-        %dd $#{@goal.pledge_amount.round(2)}
+        %dd #{number_to_currency(@goal.pledge_amount)}
         %dd 
           %img.img-thumbnail.img-responsive{:src=>"#{@goal.user.image}", :style=>"max-width:150px;"}
       - if @current_user != nil && @current_user.role == 'admin' 
