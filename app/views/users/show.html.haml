@@ -31,7 +31,7 @@
         -if(@user.provider == 'facebook')
           - @friends.each do |friend|
             -unless(friend.nil?)
-              %div.panel.panel-default.col-md-4
+              %div.panel.panel-default.col-md-4.pull-left
                 =link_to "<img src='#{friend.image}' style='max-height: 60px;' class='img img-thumbnail'>".html_safe, user_path(friend), class: "pull-left"
                 %h4.pull-right #{friend.name}
         -else
