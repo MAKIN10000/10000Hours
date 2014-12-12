@@ -32,10 +32,11 @@
           %div.row
             - @friends.each do |friend|
               -unless(friend.nil?)
-                %div.panel.panel-default.col-md-4
-                  =link_to "<img src='#{friend.image}' style='max-height: 60px;' class='img img-thumbnail'>".html_safe, user_path(friend), class: "pull-left"
-                  %div.caption
-                    %h4.pull-right #{friend.name}
+                %div.col-md-4
+                  %div.panel.panel-default
+                    =link_to "<img src='#{friend.image}' style='max-height: 60px;' class='img img-thumbnail'>".html_safe, user_path(friend), class: "pull-left"
+                    %div.caption
+                      %h4.pull-right #{friend.name}
         -else
           %div.row
             %h4.text-center Friends are only available for Facebook Users
